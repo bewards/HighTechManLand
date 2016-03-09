@@ -1,0 +1,28 @@
+// font sizing w/REM is relative to font-size set in the <html>, so no more issues with compounding
+@mixin fontsize($font-size) {
+    font-size: $font-size * 1px;
+	font-size: ($font-size / $fontsize-base) * 1rem;
+}
+
+@mixin transition($property, $duration, $animation) {
+    -webkit-transition: $property $duration $animation;
+    -moz-transition: $property $duration $animation;
+    -o-transition: $property $duration $animation;
+    transition: $property $duration $animation;
+}
+
+@mixin button {
+    display: inline-block;
+    @include fontsize(16);
+    text-transform: uppercase;
+    color: $color-offwhite;
+    background-color: $color-link;
+    padding: 8px 20px 7px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    
+    &:hover {
+        background-color: lighten($color-link, 8%);
+    }
+}

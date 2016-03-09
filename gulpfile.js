@@ -1,4 +1,6 @@
 var gulp = require('gulp');
+var util = require('gulp-util');
+var debug = require('gulp-debug');
 var jshint = require('gulp-jshint');
 var jshintReporter = require('jshint-stylish');
 var watch = require('gulp-watch');
@@ -37,10 +39,16 @@ gulp.task('watch:sass', function () {
 
 gulp.task('sass', function(){
 	gulp.src(paths.style.all)
-		.pipe(sass().on('error', sass.logError))
+        .pipe(debug({title: 'debug sass before: '}))
+		.pipe(sass({ includePaths: ['/node_modules/breakpoint-sass/stylesheets/'] })
+              .on('error', function(e) { 
+                    sass.logError;
+                    util.log(e);
+        }))
+        .pipe(debug({title: 'debug sass after: '}))
 		.pipe(gulp.dest(paths.style.output));
 });
-
+// '/node_modules/bootstrap-sass/assets/stylesheets/'
 
 gulp.task('runKeystone', shell.task('node keystone.js'));
 gulp.task('watch', [

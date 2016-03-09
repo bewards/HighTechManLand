@@ -1,0 +1,86 @@
+html {
+    font-size: $fontsize-base * 1px;
+}
+body {
+    color: $color-bodytext;
+    background-color: $color-offwhite;
+    line-height: 1.5;
+    font-size: inherit;
+    font-family: $font-aaargh;
+}
+
+// typography
+p {
+    @include fontsize(14);
+    color: $color-bodytext;
+    
+    @include breakpoint($bp-tablet) {
+        @include fontsize(16);
+    }
+    
+    &.lead {
+        @include fontsize(16);
+        
+        @include breakpoint($bp-tablet) {
+            @include fontsize(20);
+        }
+    }
+}
+h1,h2,h3,h4,h5,h6 {
+    color: $color-darkblue;
+}
+h1 {
+    line-height: 2.2;
+    @include fontsize(45);
+}
+h2 {
+    line-height: 2;
+    @include fontsize(35);
+}
+h3 {
+    line-height: 2;
+    @include fontsize(30);
+}
+h4 {
+    line-height: 1.8;
+    @include fontsize(26);
+}
+h5 {
+    line-height: 1.5;
+    @include fontsize(20);
+}
+h6 {
+    @include fontsize(16);
+}
+blockquote {
+    border-left: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+// links
+a {
+    text-decoration: none;
+    color: $color-link;
+    
+    // buttons
+    &.btn {
+        @include button;
+    }
+
+    &:hover{
+        text-decoration: none !important;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+// font icons
+i {
+    &[role="button"] {
+        cursor: pointer;
+    }
+}

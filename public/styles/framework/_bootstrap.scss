@@ -1,0 +1,50 @@
+/* bootstrap partials: custom */
+
+// Core variables and mixins
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_mixins";
+
+// bootstrap variables overriden (variable list: http://getbootstrap.com/customize/#less-variables)
+$screen-md-min: 1025px;    // desktop, 1025px and up
+$screen-md: 1025px;
+//$link-color:                 #017dc7;
+//$link-hover-color:           darken(#017dc7, 10%);
+
+// Reset and dependencies
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_normalize";
+//@import "bootstrap/_print";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_glyphicons";
+
+// Core CSS
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_scaffolding";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/type";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_grid";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_forms";
+
+// Components
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_component-animations";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_dropdowns";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_input-groups";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_navs";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_breadcrumbs";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_pagination";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_pager";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_thumbnails";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_media";
+
+// todo: comment out these with replaced sass
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_navs";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_navbar";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_list-group";
+
+//@import "bootstrap/panels";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_responsive-embed";
+
+// Components w/ JavaScript
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_modals";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_tooltip";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_popovers";
+
+// Utility classes
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_utilities";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_responsive-utilities";

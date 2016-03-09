@@ -1,0 +1,42 @@
+// Override Bootstrap variables
+$font-size-base: 16px;
+
+// page
+$container-large-desktop: 1440px;
+
+// breakpoint
+$bp-mobileonly: 0px 767px;
+$bp-tablet: 768px, print;
+$bp-tabletonly: 768px 1024px;
+$bp-desktop: 1024px, print;
+$bp-desktop-hd: 1440px, print;
+
+// color palette
+$color-white: #FFF;
+$color-black: #000;
+$color-limegreen: #8dc63f;
+$color-darkcyan: #00a79d;
+$color-orange: #f9a61a;
+$color-darkorange: #f37021;
+$color-darkblue: #00468b;
+$color-purple: #662d91;
+$color-gray: #aaaaaa;
+
+$color-offwhite: #E2E5B3;
+$color-green-light: #57D084;
+$color-torqoise: #02CEA2;
+$color-torqoise-dark: #00B5A2;
+$color-seafoam: #01899B;
+$color-offblue: #066F99;
+
+    // site level
+    $color-bodytext: #555555;
+    $color-link: $color-seafoam;
+
+    // partial level
+
+// font
+$fontsize-base: 16;
+    
+    // families
+    $font-aaargh: "aaarghnormal", "Open Sans", sans-serif;
