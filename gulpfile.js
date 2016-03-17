@@ -6,19 +6,34 @@ var jshintReporter = require('jshint-stylish');
 var watch = require('gulp-watch');
 var shell = require('gulp-shell')
 
+// custom
 var sass = require('gulp-sass');
+var browserify = require('browserify');
+var sourceStream = require('vinyl-source-stream');
 
 
 var paths = {
-	'src':['./models/**/*.js','./routes/**/*.js', 'keystone.js', 'package.json']
-
-,
+	'src':['./models/**/*.js','./routes/**/*.js', './public/js/modules/*.js', 'keystone.js', 'package.json'],
 	'style': {
 		all: './public/styles/**/*.scss',
 		output: './public/styles/'
-	}
-
+	},
+    'browserify': {
+        src: './public/js/main.js',
+        bundle: 'bundle.js',
+        dest: './public/js/'
+    }
 };
+
+// gulp browserify
+gulp.task('browserify', ['lint'], function() {
+    
+    var bundleStream = browserify(paths.browserify.src).bundle();
+
+    return bundleStream
+        .pipe(sourceStream(paths.browserify.bundle))
+        .pipe(gulp.dest(paths.browserify.dest));
+});
 
 // gulp lint
 gulp.task('lint', function(){
@@ -58,4 +73,4 @@ gulp.task('watch', [
   'watch:lint'
 ]);
 
-gulp.task('default', ['watch', 'runKeystone']);
+gulp.task('default', ['watch', 'browserify', 'runKeystone']);
