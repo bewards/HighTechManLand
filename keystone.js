@@ -22,9 +22,13 @@ keystone.init({
 	'view engine': 'hbs',
     
     // wysiwyg
+    'wysiwyg skin': 'lightgray',
     'wysiwyg cloudinary images': true,
-    'wysiwyg additional buttons': 'fontsizeselect fontselect',
-    'wysiwyg additional plugins': 'code, anchor, fullscreen',
+    'wysiwyg additional plugins': 'code, codesample, anchor, fullscreen',
+    'wysiwyg additional buttons': 'fontsizeselect fontselect codesample',
+    'wysiwyg additional options': {
+            content_css: '/styles/site.css'
+    },
 	
 	'custom engine': handlebars.create({
 		layoutsDir: 'templates/views/layouts',
