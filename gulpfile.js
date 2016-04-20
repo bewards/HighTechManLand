@@ -13,7 +13,7 @@ var sourceStream = require('vinyl-source-stream');
 
 
 var paths = {
-	'src':['./models/**/*.js','./routes/**/*.js', './public/js/modules/*.js', 'keystone.js', 'package.json'],
+	'src':['./models/**/*.js','./routes/**/*.js', './public/js/**/*.js', 'keystone.js', 'package.json'],
 	'style': {
 		all: './public/styles/**/*.scss',
 		output: './public/styles/'
@@ -67,10 +67,8 @@ gulp.task('sass', function(){
 
 gulp.task('runKeystone', shell.task('node keystone.js'));
 gulp.task('watch', [
-
-  'watch:sass',
-
-  'watch:lint'
+    'watch:sass',
+    'watch:lint',
 ]);
 
 gulp.task('default', ['watch', 'browserify', 'runKeystone']);

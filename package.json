@@ -10,11 +10,23 @@
   "author": "Benjamin Sewards",
   "license": "ISC",
   "browser": {
-    "shuffle": "./public/js/modules/shuffle.js"
+    "shuffle": "./public/js/modules/shuffle.js",
+    "Modernizr": "./public/js/framework/modernizr-custom.js"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "Modernizr": {
+      "exports": "Modernizr"
+    }
   },
   "dependencies": {
     "async": "^1.5.0",
     "bootstrap-sass": "^3.3.6",
+    "browserify-shim": "^3.8.11",
     "cloudinary": "^1.2.4",
     "dotenv": "^1.1.0",
     "express-handlebars": "^1.1.0",

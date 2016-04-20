@@ -120,6 +120,21 @@ module.exports = function() {
 		}
 		return new hbs.SafeString(output);
 	};
+    
+    // returns the categories as a string array for data-attributes
+    _helpers.categoryKeys = function(categories) {
+        
+        if (categories && categories.length) {
+            
+            catKeys = _.map(categories, function(c) {
+                return c.key;
+            });
+            
+            return JSON.stringify(catKeys);
+        }
+        
+        return JSON.stringify([]);
+    };
 	
 	/* To Implement [Ghost Helpers](http://docs.ghost.org/themes/#helpers)
 	 * The [source](https://github.com/TryGhost/Ghost/blob/master/core/server/helpers/index.js)

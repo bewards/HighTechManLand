@@ -1,0 +1,30 @@
+.blog-module {
+    
+    .blog-filter-options {
+        @include make-row();
+        
+        .filter-group {
+            &.sort {
+                display: none;
+            }
+        }
+    }
+    .blog-posts {
+        @include make-row();
+        
+        .post, .sizer {
+            @include make-xs-column(6);
+            @include make-sm-column(4);
+        }
+        .post {
+            h3 {
+                line-height: 1.25;
+            }
+        }
+        .sizer {
+            position: absolute;
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+}

@@ -1,7 +1,8 @@
 // frameworks, libraries, plugins, etc.
+var Modernizr = require('Modernizr');
 var $ = jQuery = require('jquery');
-var bootstrap = require('bootstrap-sass');
-var prismjs = require('prismjs');
+require('bootstrap-sass');
+require('prismjs');
 
 // modules
 var shuffle = require('shuffle');

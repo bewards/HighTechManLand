@@ -2,14 +2,15 @@
 $font-size-base: 16px;
 
 // page
+$container-desktop: 1170px;
 $container-large-desktop: 1440px;
 
 // breakpoint
 $bp-mobileonly: 0px 767px;
-$bp-tablet: 768px, print;
+$bp-tablet: 768px;
 $bp-tabletonly: 768px 1024px;
-$bp-desktop: 1024px, print;
-$bp-desktop-hd: 1440px, print;
+$bp-desktop: 1024px;
+$bp-desktop-hd: 1440px;
 
 // color palette
 $color-white: #FFF;

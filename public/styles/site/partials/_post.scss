@@ -1,0 +1,12 @@
+.post {
+    @include make-xs-column(12);
+}
+
+#disqus_thread {
+    @include container-fixed();
+    padding-top: 30px;
+    
+    @include breakpoint($bp-desktop) {
+        max-width: $container-desktop;
+    }
+}

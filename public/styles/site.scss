@@ -12,6 +12,12 @@
 @import "site/structural";
 
 // Site Reusables
+@import "site/reusables/forms";
+@import "site/reusables/articles";
 
 // Site Partials
-@import "site/partials/blog-post";
+@import "site/partials/header";
+@import "site/partials/footer";
+@import "site/partials/about";
+@import "site/partials/blog";
+@import "site/partials/post";
