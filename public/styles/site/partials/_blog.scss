@@ -4,6 +4,9 @@
         @include make-row();
         
         .filter-group {
+            &.categories {
+                @include make-xs-column(12);
+            }
             &.sort {
                 display: none;
             }

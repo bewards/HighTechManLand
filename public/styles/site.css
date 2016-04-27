@@ -4729,6 +4729,13 @@ article p > img {
     display: table; }
   .blog-module .blog-filter-options:after {
     clear: both; }
+  .blog-module .blog-filter-options .filter-group.categories {
+    position: relative;
+    float: left;
+    width: 100%;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px; }
   .blog-module .blog-filter-options .filter-group.sort {
     display: none; }
 
