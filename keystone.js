@@ -22,7 +22,7 @@ keystone.init({
 	'view engine': 'hbs',
     
     // wysiwyg
-    'wysiwyg skin': 'lightgray',
+    'wysiwyg skin': 'keystone',
     'wysiwyg cloudinary images': true,
     'wysiwyg additional plugins': 'code, codesample, anchor, fullscreen',
     'wysiwyg additional buttons': 'fontsizeselect fontselect codesample',
