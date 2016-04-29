@@ -1,0 +1,72 @@
+%tagActiveState {
+  color: $color-white;
+  background-color: $color-offblue;
+
+  &::after {
+    border-left-color: $color-offblue;
+  }
+}
+
+.tags {
+  list-style: none;
+  margin: 0;
+  overflow: hidden; 
+  padding: 0;
+  
+  input[type="checkbox"] {
+    visibility: hidden;
+    position: absolute;
+    cursor: pointer;
+    
+    &:checked ~ .tag {
+      @extend %tagActiveState;
+    }
+  }
+}
+
+.tag {
+    background: $color-lightgray;
+    border-radius: 3px 0 0 3px;
+    color: $color-bodytext;
+    display: inline-block;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 20px 0 23px;
+    position: relative;
+    margin: 0 10px 10px 0;
+    font-size: 13px;
+    text-decoration: none;
+    letter-spacing: .1rem;
+    cursor: pointer;
+    -webkit-transition: background-color .6s, color .6s;
+    
+    // tag holepunch
+    &:before {
+        background: $color-white;
+        border-radius: 10px;
+        box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+        content: '';
+        height: 6px;
+        left: 10px;
+        position: absolute;
+        width: 6px;
+        top: 10px;
+    }
+    
+    // tag right point
+    &:after {
+        background: $color-white;
+        border-bottom: 13px solid transparent;
+        border-left: 10px solid $color-lightgray;
+        border-top: 13px solid transparent;
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        -webkit-transition: border-left-color .6s;
+    }
+    
+    &:hover {
+        @extend %tagActiveState;
+    }
+}
