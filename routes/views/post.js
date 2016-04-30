@@ -23,7 +23,10 @@ exports = module.exports = function(req, res) {
 		}).populate('author categories');
 		
 		q.exec(function(err, result) {
+            // set primary post and dynamic metadata
 			locals.data.post = result;
+            locals.metaTitle = result.title;
+            locals.metaDescr = result.content.metaDescription;
 			next(err);
 		});
 		

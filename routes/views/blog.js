@@ -7,6 +7,8 @@ exports = module.exports = function(req, res) {
 	var locals = res.locals;
 	
 	// Init locals
+    locals.metaTitle = "High Tech Man Land | HTML";
+    locals.metaDescr = 'Innovative Front End Tricks and Sitecore Best Practices by Benjamin Sewards';
 	locals.section = 'blog';
 	locals.filters = {
 		category: req.params.category

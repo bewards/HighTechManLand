@@ -7,6 +7,8 @@ exports = module.exports = function(req, res) {
 	var locals = res.locals;
 	
 	// Set locals
+    locals.metaTitle = "About Me | High Tech Man Land";
+    locals.metaDescr = 'Contact Ben Sewards for Inquiries or just to say Hello';
 	locals.section = 'contact';
 	locals.enquiryTypes = Enquiry.fields.enquiryType.ops;
 	locals.formData = req.body || {};

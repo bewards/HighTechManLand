@@ -4,7 +4,15 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>TheDevPit</title>
+        
+        <meta name="description" content="{{metaDescr}}">
+        
+        <meta property="og:title" content="The Rock" />
+        <meta property="og:type" content="video.movie" />
+        <meta property="og:url" content="http://www.imdb.com/title/tt0117500/" />
+        <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg" />
+        
+		<title>{{metaTitle}}</title>
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 		<link href="/styles/site.css" rel="stylesheet">
 
@@ -19,6 +27,9 @@
 		<![endif]-->
 	</head>
 	<body>
+        <div class="locals">
+            {{section}}
+        </div>
 		<div id="header">
 			<div class="container">
 				<div role="navigation" class="navbar navbar-default">
@@ -35,6 +46,7 @@
 									{{# each navLinks}}
 									<li {{#ifeq ../section key}}class="active"{{else}}{{/ifeq}}>
 										<a href="{{ href }}">{{ label }}</a>
+										<p>[section: {{../section}}, key: {{key}}] </p>
 									</li>
 								{{/each}}
 							</ul>

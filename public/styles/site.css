@@ -4791,3 +4791,55 @@ article p > img {
   @media (min-width: 1024px) {
     #disqus_thread {
       max-width: 1170px; } }
+
+.categories input[type="checkbox"]:checked ~ .tag, .tag:hover {
+  color: #FFF;
+  background-color: #066F99; }
+  .categories input[type="checkbox"]:checked ~ .tag::after, .tag:hover::after {
+    border-left-color: #066F99; }
+
+.categories {
+  list-style: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0; }
+  .categories input[type="checkbox"] {
+    visibility: hidden;
+    position: absolute;
+    cursor: pointer; }
+
+.tag {
+  background: #eee;
+  border-radius: 3px 0 0 3px;
+  color: #555555;
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px 0 23px;
+  position: relative;
+  margin: 0 10px 10px 0;
+  font-size: 13px;
+  text-decoration: none;
+  letter-spacing: .1rem;
+  cursor: pointer;
+  -webkit-transition: background-color .6s, color .6s; }
+  .tag:before {
+    background: #FFF;
+    border-radius: 10px;
+    box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+    content: '';
+    height: 6px;
+    left: 10px;
+    position: absolute;
+    width: 6px;
+    top: 10px; }
+  .tag:after {
+    background: #FFF;
+    border-bottom: 13px solid transparent;
+    border-left: 10px solid #eee;
+    border-top: 13px solid transparent;
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-transition: border-left-color .6s; }

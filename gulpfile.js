@@ -13,7 +13,7 @@ var sourceStream = require('vinyl-source-stream');
 
 
 var paths = {
-	'src':['./models/**/*.js','./routes/**/*.js', './public/js/**/*.js', 'keystone.js', 'package.json'],
+	'src':['./models/**/*.js','./routes/**/*.js', './public/js/modules/**/*.js', './public/js/main.js', 'keystone.js', 'package.json'],
 	'style': {
 		all: './public/styles/**/*.scss',
 		output: './public/styles/'
