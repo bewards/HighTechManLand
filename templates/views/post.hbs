@@ -1,24 +1,25 @@
-<div class="container">
-	<div class="row">
-		<div class="post">
-			<article>
-				<p><a href="/blog">&larr; back to the blog</a></p>
-				<hr>
-				<header>
-					<h1>{{data.post.title}}</h1>
-					<h5>
-						{{{categoryList data.post.categories prefix="Posted in "}}}
-						{{#if author.name.first}}by {{author.name.first}}{{/if}}
-					</h5>
-				</header>
-				<div class="post-content">
-				    {{{data.post.content.brief}}}
-					{{{data.post.content.extended}}}
-				</div>
-			</article>
-		</div>
-	</div>
-</div>
+<article>
+    <header class="post-wall">
+       <div class="container">
+            <h1>{{data.post.title}}</h1>
+            <h5>
+                {{{categoryList data.post.categories separator="" isTagTemplate=true}}}
+            </h5>
+            <p>{{#if author.name.first}}by {{author.name.first}}{{/if}}</p>
+       </div>
+    </header>
+    
+    <div class="post html-light">
+       <div class="container">
+            <div class="post-content">
+                {{{data.post.content.brief}}}
+                {{{data.post.content.extended}}}
+            </div>
+       </div>
+    </div>
+    
+    <p class="back"><a href="/blog">&larr; back to the blog</a></p>
+</article>
 
 <div id="disqus_thread"></div>
 <script>

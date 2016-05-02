@@ -3,8 +3,8 @@ html {
     font-size: $fontsize-base * 1px;
 }
 body {
-    color: $color-bodytext;
-    background-color: $color-offwhite;
+    color: $color-white;
+    background-color: $color-background;
     line-height: 1.5;
     font-size: inherit;
     font-family: $font-opensans;
@@ -28,7 +28,8 @@ p {
     }
 }
 h1,h2,h3,h4,h5,h6 {
-    color: $color-darkblue;
+    font-family: $font-leaguegothic;
+    color: $color-header;
 }
 h1 {
     line-height: 2.2;
@@ -71,6 +72,7 @@ a {
 
     &:hover{
         text-decoration: none !important;
+        color: lighten($color-link, 8%);
     }
 }
 
@@ -83,5 +85,16 @@ img {
 i {
     &[role="button"] {
         cursor: pointer;
+    }
+}
+
+.html-light {
+    background-color: $color-bodytext;
+    
+    h2,h3,h4,h5 {
+        color: $color-darkorange;
+    }
+    p, span, li {
+        color: $color-background;
     }
 }

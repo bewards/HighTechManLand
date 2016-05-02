@@ -8,7 +8,7 @@
                     {{#if postCount}}
                         <span class="filter">
                             <input type="checkbox" id="cat-{{name}}" value="{{key}}" />
-                            <label class="tag" for="cat-{{name}}">{{name}} ({{postCount}})</label>
+                            <label class="b-tag" for="cat-{{name}}">{{name}} ({{postCount}})</label>
                         </span>
                     {{/if}}
                 {{/each}}
@@ -26,7 +26,7 @@
                     <h3><a href="{{postUrl slug}}">{{{title}}}</a></h3>
                 </figcaption>
                 <p class="lead text-muted">
-                    {{{categoryList categories prefix="Posted in "}}} {{#if author.name.first}}by {{author.name.first}}{{/if}}
+                    {{{categoryList categories prefix="<span>Posted in</span>"}}} {{#if author.name.first}}by {{author.name.first}}{{/if}}
                 </p>
                 <div class="post-brief">{{{content.brief}}}</div>
                 <p class="read-more"><a href="{{postUrl slug}}">Read more...</a></p>

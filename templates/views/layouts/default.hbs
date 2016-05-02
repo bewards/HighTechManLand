@@ -27,9 +27,6 @@
 		<![endif]-->
 	</head>
 	<body>
-        <div class="locals">
-            {{section}}
-        </div>
 		<div id="header">
 			<div class="container">
 				<div role="navigation" class="navbar navbar-default">
@@ -95,9 +92,26 @@
 			{{{body}}}
 		</div>
 		<div class="container">
-			<div id="footer">
-				<p>Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.</p>
-			</div>
+			<footer id="footer">
+			    <section class="quote">
+			        <h4>High Tech Man Land</h4>
+			    </section>
+                <section class="social">
+                    <h4>Where I'm Plugged In</h4>
+                    <ul>
+                        <li><a href="http://stackoverflow.com/users/1148619/ben-sewards?tab=profile">Stackoverflow</a></li>
+                        <li><a href="https://github.com/bewards">Github</a></li>
+                        <li><a href="https://www.linkedin.com/in/bensewards">LinkedIn</a></li>
+                        <li><a href="http://codepen.io/bensewards/">Codepen</a></li>
+                        <li class="full"><a href="https://sitecorechat.slack.com">sitecorechat @bewards</a></li>
+                    </ul>
+                </section>
+			    <section class="contact">
+			        <h4>Let's Keep in Touch</h4>
+			        <a href="">Contact Me</a>
+			    </section>
+			    <p>Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.</p>
+			</footer>
 		</div>
 		<script src="/js/bundle.js"></script>
 		{{{isAdminEditorJS user}}}

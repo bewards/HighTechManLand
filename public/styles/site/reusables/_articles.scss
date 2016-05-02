@@ -1,14 +1,29 @@
 article {
+    position: relative;
     
     h1 {
         
     }
     h2 {
-        
+        line-height: 1.5;
     }
     p {
+        &.back {
+            position: absolute;
+            top: 0;
+            left: 8%;
+        }
         > img {
             margin: 15px 0;
         }
+        
+        code {
+            word-wrap: break-word;
+            background-color: $color-white;
+        }
+    }
+    
+    pre[class*="language-"] {
+        margin-top: 20px;
     }
 }

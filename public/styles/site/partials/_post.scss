@@ -1,5 +1,41 @@
+.post-wall {
+    text-align: center;
+    padding: 20px 0;
+    @include breakpoint($bp-tablet) {
+        padding: 40px 0;
+    }
+    @include breakpoint($bp-desktop) {
+        padding: 50px 0;
+    }
+    
+    h1 {
+        letter-spacing: 3px;
+        line-height: 1.5;
+        margin: 0;
+        
+        @include breakpoint($bp-tablet) {
+            @include fontsize(50);
+        }
+        @include breakpoint($bp-desktop) {
+            @include fontsize(60);
+        }
+    }
+    h5 {
+        span {
+            display: block;
+            
+            @include breakpoint($bp-tablet) {
+                display: inline;
+                margin-right: 10px;
+                vertical-align: middle;
+            }
+        }
+    }
+}
 .post {
-    @include make-xs-column(12);
+    .post-content {
+        padding: 50px 0;
+    }
 }
 
 #disqus_thread {

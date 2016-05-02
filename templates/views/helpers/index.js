@@ -10,6 +10,7 @@ var CLOUDINARY_HOST = 'http://res.cloudinary.com';
 
 // Collection of templates to interpolate
 var linkTemplate = _.template('<a href="<%= url %>"><%= text %></a>');
+var linkTagTemplate = _.template('<a class="b-tag" href="<%= url %>"><%= text %></a>');
 var scriptTemplate = _.template('<script src="<%= src %>"></script>');
 var cssLinkTemplate = _.template('<link href="<%= href %>" rel="stylesheet">');
 var cloudinaryUrlLimit = _.template(CLOUDINARY_HOST + '/<%= cloudinaryUser %>/image/upload/c_limit,f_auto,h_<%= height %>,w_<%= width %>/<%= publicId %>.jpg');
@@ -99,17 +100,26 @@ module.exports = function() {
 			separator = _.isString(options.hash.separator) ? options.hash.separator : ', ',
 			prefix = _.isString(options.hash.prefix) ? options.hash.prefix : '',
 			suffix = _.isString(options.hash.suffix) ? options.hash.suffix : '',
+            isTagTemplate = _.isBoolean(options.hash.isTagTemplate) ? options.hash.isTagTemplate : false,
 			output = '';
 		
 		function createTagList(tags) {
 			var tagNames = _.pluck(tags, 'name');
-			
+			console.log('createTagList init');
 			if (autolink) {
 				return _.map(tags, function(tag) {
-					return linkTemplate({
-						url: ('/blog/' + tag.key),
-						text: _.escape(tag.name)
-					});
+                    if (isTagTemplate) {
+                        console.log('worksben');
+                        return linkTagTemplate({
+                            url: ('/' + tag.key),
+                            text: _.escape(tag.name)
+                        });                        
+                    } else {
+                        return linkTemplate({
+                            url: ('/' + tag.key),
+                            text: _.escape(tag.name)
+                        });
+                    }
 				}).join(separator);
 			}
 			return _.escape(tagNames.join(separator));
@@ -231,7 +241,7 @@ module.exports = function() {
 	
 	// Direct url link to a specific post
 	_helpers.postUrl = function(postSlug, options) {
-		return ('/blog/post/' + postSlug);
+		return ('/post/' + postSlug);
 	};
 	
 	// might be a ghost helper
@@ -242,7 +252,7 @@ module.exports = function() {
 	
 	// create the category url for a blog-category page
 	_helpers.categoryUrl = function(categorySlug, options) {
-		return ('/blog/' + categorySlug);
+		return ('/' + categorySlug);
 	};
 	
 	// ### Pagination Helpers
