@@ -8,6 +8,7 @@ body {
     line-height: 1.5;
     font-size: inherit;
     font-family: $font-opensans;
+    padding-top: calc(50px + 3vw);    // for fixed header displacement
 }
 
 // typography
@@ -65,14 +66,21 @@ a {
     text-decoration: none;
     color: $color-link;
     
-    // buttons
+    // anchor buttons
     &.btn {
         @include button;
     }
 
-    &:hover{
+    &:hover {
         text-decoration: none !important;
         color: lighten($color-link, 8%);
+    }
+}
+
+button {
+    &:focus {
+        outline:0 !important;
+        transition: all 0.2s cubic-bezier(0.2, 0.3, 0.25, 0.9);
     }
 }
 

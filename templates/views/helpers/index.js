@@ -105,11 +105,11 @@ module.exports = function() {
 		
 		function createTagList(tags) {
 			var tagNames = _.pluck(tags, 'name');
-			console.log('createTagList init');
+			
 			if (autolink) {
 				return _.map(tags, function(tag) {
                     if (isTagTemplate) {
-                        console.log('worksben');
+                        
                         return linkTagTemplate({
                             url: ('/' + tag.key),
                             text: _.escape(tag.name)

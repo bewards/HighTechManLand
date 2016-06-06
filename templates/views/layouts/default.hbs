@@ -1,119 +1,112 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-        
-        <meta name="description" content="{{metaDescr}}">
-        
-        <meta property="og:title" content="The Rock" />
-        <meta property="og:type" content="video.movie" />
-        <meta property="og:url" content="http://www.imdb.com/title/tt0117500/" />
-        <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg" />
-        
-		<title>{{metaTitle}}</title>
-		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-		<link href="/styles/site.css" rel="stylesheet">
 
-		{{!-- This file provides the default styling for the KeystoneJS Content Editor
-			- only renders when user is logged in and admin --}}
-		{{{isAdminEditorCSS user}}}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		{{!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --}}
-		<!--[if lt IE 9]>
+    <meta name="description" content="{{metaDescr}}">
+
+    <meta property="og:title" content="The Rock" />
+    <meta property="og:type" content="video.movie" />
+    <meta property="og:url" content="http://www.imdb.com/title/tt0117500/" />
+    <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg" />
+
+    <title>{{metaTitle}}</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link href="/styles/site.css" rel="stylesheet"> {{!-- This file provides the default styling for the KeystoneJS Content Editor - only renders when user is logged in and admin --}} {{{isAdminEditorCSS user}}} {{!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --}}
+    <!--[if lt IE 9]>
 			<script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js"></script>
 			<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
-	</head>
-	<body>
-		<div id="header">
-			<div class="container">
-				<div role="navigation" class="navbar navbar-default">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-							</button>
-							<a href="/" class="navbar-brand">TheDevPit</a>
-						</div>
-						<div class="collapse navbar-collapse">
-							<ul class="nav navbar-nav navbar-left">
-									{{# each navLinks}}
-									<li {{#ifeq ../section key}}class="active"{{else}}{{/ifeq}}>
-										<a href="{{ href }}">{{ label }}</a>
-										<p>[section: {{../section}}, key: {{key}}] </p>
-									</li>
-								{{/each}}
-							</ul>
-							<ul class="nav navbar-nav navbar-right">
-								{{#if user}}
-								<li><a href="/keystone/signout">Sign Out</a></li>
-								{{else}}
-								<li><a href="/keystone/signin">Sign In</a></li>
-								{{/if}}
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="body">
-			<!--
+</head>
+
+<body>
+
+    <header id="header" role="banner">
+        <div class="container-fluid">
+            <a href="/" class="logo">
+               {{> header/svg-logo }}
+               High Tech Man Land
+            </a>
+            <button type="button" class="hamburger">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <nav class="navbar-collapse" role="navigation">
+                <ul id="menu-primary-navigation" role="menu">
+                    {{# each navLinks}}
+                    <li role="menuitem" {{#ifeq ../section key}}class="active" {{else}}{{/ifeq}}>
+                        <a href="{{ href }}">{{ label }}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </nav>
+        </div>
+<!--
+        {{#if user}}
+        <li><a href="/keystone/signout">Sign Out</a></li>
+        {{else}}
+        <li><a href="/keystone/signin">Sign In</a></li>
+        {{/if}}
+-->
+    </header>
+    <div id="body">
+        <!--
 				Flash messages allow you to display once-off status messages to users, e.g. form
 				validation errors, success messages, etc
 			-->
-			{{#if messages}}
-			<div id="flash-messages" class="container">
-				{{#if messages.info}}
-				<div class="alert alert-info">
-						{{{flashMessages messages.info}}}
-				</div>
-				{{/if}}
-				{{#if messages.success}}
-				<div class="alert alert-success">
-						{{{flashMessages messages.success}}}
-				</div>
-				{{/if}}
-				{{#if messages.warning}}
-				<div class="alert alert-warning">
-						{{{flashMessages messages.warning}}}
-				</div>
-				{{/if}}
-				{{#if messages.error}}
-				<div class="alert alert-danger">
-						{{{flashMessages messages.error}}}
-				</div>
-				{{/if}}
-			</div>
-			{{/if}}
-			<!-- The content block should contain the body of your template's content-->
-			{{{body}}}
-		</div>
-		<div class="container">
-			<footer id="footer">
-			    <section class="quote">
-			        <h4>High Tech Man Land</h4>
-			    </section>
-                <section class="social">
-                    <h4>Where I'm Plugged In</h4>
-                    <ul>
-                        <li><a href="http://stackoverflow.com/users/1148619/ben-sewards?tab=profile">Stackoverflow</a></li>
-                        <li><a href="https://github.com/bewards">Github</a></li>
-                        <li><a href="https://www.linkedin.com/in/bensewards">LinkedIn</a></li>
-                        <li><a href="http://codepen.io/bensewards/">Codepen</a></li>
-                        <li class="full"><a href="https://sitecorechat.slack.com">sitecorechat @bewards</a></li>
-                    </ul>
-                </section>
-			    <section class="contact">
-			        <h4>Let's Keep in Touch</h4>
-			        <a href="">Contact Me</a>
-			    </section>
-			    <p>Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.</p>
-			</footer>
-		</div>
-		<script src="/js/bundle.js"></script>
-		{{{isAdminEditorJS user}}}
-	</body>
+        {{#if messages}}
+        <div id="flash-messages" class="container">
+            {{#if messages.info}}
+            <div class="alert alert-info">
+                {{{flashMessages messages.info}}}
+            </div>
+            {{/if}} {{#if messages.success}}
+            <div class="alert alert-success">
+                {{{flashMessages messages.success}}}
+            </div>
+            {{/if}} {{#if messages.warning}}
+            <div class="alert alert-warning">
+                {{{flashMessages messages.warning}}}
+            </div>
+            {{/if}} {{#if messages.error}}
+            <div class="alert alert-danger">
+                {{{flashMessages messages.error}}}
+            </div>
+            {{/if}}
+        </div>
+        {{/if}}
+        <!-- The content block should contain the body of your template's content-->
+        {{{body}}}
+    </div>
+    <div class="container">
+        <footer id="footer">
+            <section class="quote">
+                <h4>High Tech Man Land</h4>
+            </section>
+            <section class="social">
+                <h4>Where I'm Plugged In</h4>
+                <ul>
+                    <li><a href="http://stackoverflow.com/users/1148619/ben-sewards?tab=profile">Stackoverflow</a></li>
+                    <li><a href="https://github.com/bewards">Github</a></li>
+                    <li><a href="https://www.linkedin.com/in/bensewards">LinkedIn</a></li>
+                    <li><a href="http://codepen.io/bensewards/">Codepen</a></li>
+                    <li class="full"><a href="https://sitecorechat.slack.com">sitecorechat @bewards</a></li>
+                </ul>
+            </section>
+            <section class="contact">
+                <h4>Let's Keep in Touch</h4>
+                <a href="">Contact Me</a>
+            </section>
+            <p>Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.</p>
+        </footer>
+    </div>
+    <script src="/js/bundle.js"></script>
+    {{{isAdminEditorJS user}}}
+</body>
+
 </html>

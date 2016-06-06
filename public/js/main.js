@@ -5,6 +5,7 @@ require('bootstrap-sass');
 require('prismjs');
 
 // modules
+var header = require('header');
 var shuffle = require('shuffle');
 
 module.exports = function () {

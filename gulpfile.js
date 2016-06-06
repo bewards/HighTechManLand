@@ -10,7 +10,7 @@ var shell = require('gulp-shell')
 var sass = require('gulp-sass');
 var browserify = require('browserify');
 var sourceStream = require('vinyl-source-stream');
-
+var autoprefixer = require('gulp-autoprefixer');
 
 var paths = {
 	'src':['./models/**/*.js','./routes/**/*.js', './public/js/modules/**/*.js', './public/js/main.js', 'keystone.js', 'package.json'],
@@ -26,12 +26,13 @@ var paths = {
 };
 
 // gulp browserify
-gulp.task('browserify', ['lint'], function() {
+gulp.task('browserify', function() {
     
     var bundleStream = browserify(paths.browserify.src).bundle();
 
     return bundleStream
         .pipe(sourceStream(paths.browserify.bundle))
+        .pipe(debug())
         .pipe(gulp.dest(paths.browserify.dest));
 });
 
@@ -44,7 +45,7 @@ gulp.task('lint', function(){
 
 // gulp watcher for lint
 gulp.task('watch:lint', function () {
-	gulp.watch(paths.src, ['lint']);
+	gulp.watch(paths.src, ['lint', 'browserify']);
 });
 
 
@@ -60,6 +61,7 @@ gulp.task('sass', function(){
                     sass.logError;
                     util.log(e);
         }))
+        .pipe(autoprefixer({ browsers: ['last 2 version', 'ie > 8', 'android >= 4', 'ios >= 6'], cascade: false }))
         .pipe(debug({title: 'debug sass after: '}))
 		.pipe(gulp.dest(paths.style.output));
 });

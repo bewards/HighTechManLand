@@ -11,6 +11,7 @@
   "license": "ISC",
   "browser": {
     "shuffle": "./public/js/modules/shuffle.js",
+    "header": "./public/js/modules/header.js",
     "Modernizr": "./public/js/framework/modernizr-custom.js"
   },
   "browserify": {
@@ -38,9 +39,11 @@
     "node-sass-middleware": "^0.9.7",
     "prismjs": "^1.4.1",
     "shufflejs": "^3.1.1",
+    "typed.js": "^1.1.1",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
+    "autoprefixer": "^6.3.6",
     "breakpoint-sass": "^2.7.0",
     "gulp": "^3.7.0",
     "gulp-autoprefixer": "^3.1.0",

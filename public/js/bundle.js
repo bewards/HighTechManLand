@@ -14636,6 +14636,7 @@ require('bootstrap-sass');
 require('prismjs');
 
 // modules
+var header = require('header');
 var shuffle = require('shuffle');
 
 module.exports = function () {
@@ -14646,7 +14647,23 @@ module.exports = function () {
     });
 
 }();
-},{"Modernizr":5,"bootstrap-sass":1,"jquery":2,"prismjs":3,"shuffle":7}],7:[function(require,module,exports){
+},{"Modernizr":5,"bootstrap-sass":1,"header":7,"jquery":2,"prismjs":3,"shuffle":8}],7:[function(require,module,exports){
+var $ = jQuery = require('jquery');
+
+module.exports = function() {
+    
+    var $body = $('body');
+    
+    $('#header .hamburger').on('click', function() {
+        var $btn = $(this);
+        
+        $body.toggleClass('nav-open');
+        
+        return false;
+    });
+    
+}();
+},{"jquery":2}],8:[function(require,module,exports){
 var $ = jQuery = require('jquery');
 require('shufflejs');
 
