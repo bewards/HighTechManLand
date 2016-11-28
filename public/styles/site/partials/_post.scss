@@ -35,6 +35,28 @@
 .post {
     .post-content {
         padding: 50px 0;
+        
+        h2, h3, h4 {
+            > a {
+                @include fontsize(20);
+                margin-left: 10px;
+                &:before {
+                    content: "(";
+                }
+                &:after {
+                    content: ")";
+                }
+            }
+        }
+        
+        p {
+            > code {
+                border-radius: 6px;
+                padding: 0 2px 1px 4px;
+                background: $color-white;
+                color: $color-code;
+            }
+        }
     }
 }
 

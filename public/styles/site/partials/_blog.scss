@@ -10,14 +10,25 @@
             &.sort {
                 display: none;
             }
+            >h3 {
+                display: inline-block;
+                
+                span {
+                    color: $color-darkorange;
+                }
+                + a {
+                    margin-left: 10px;
+                }
+            }
         }
     }
     .blog-posts {
         @include make-row();
         
         .post, .sizer {
-            @include make-xs-column(6);
-            @include make-sm-column(4);
+            @include make-xs-column(12);
+            @include make-sm-column(6);
+            @include make-md-column(4);
         }
         .post {
             h3 {

@@ -32,7 +32,7 @@ module.exports = function() {
             }
         }
         
-        // If a shapes filter is active
+        // If a categories filter is active
         function itemPassesFilters(data) {
             if (categories.length > 0 && !valueInArrays(data.categories, categories)) {
                 return false;

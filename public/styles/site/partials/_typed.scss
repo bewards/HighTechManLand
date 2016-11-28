@@ -1,0 +1,83 @@
+.typed {
+    background-color: $color-header;
+    padding: 2em 0;
+    
+    .typed-wrapper {
+        display: inline-block;
+        
+        @include breakpoint($bp-tablet) {
+            &:before, &:after {
+                @include fontsize(45);
+                color: $color-background;
+            }
+            &:before {
+                content: "<";
+            }
+            &:after {
+                content: "/>";
+            }
+        }
+        
+        .typer-wrapper {
+            @extend h1;
+            display: inline-block;
+            margin: 0;
+            
+            @include breakpoint($bp-tablet) {
+                &:before {
+                    color: $color-background;
+                    content: open-quote;
+                }
+                &:after {
+                    color: $color-background;
+                    content: close-quote;
+                }
+            }
+        }
+        
+        .headline {
+            color: $color-background;
+            display: none;
+            
+            @include breakpoint($bp-tablet) {
+                display: inline-block;
+            }
+            
+            + span {
+                display: none;
+                margin-left: 10px;
+                
+                @include breakpoint($bp-tablet) {
+                    display: inline-block;
+                }
+            }
+        }
+        
+        p {
+            display: inline-block;
+            
+            &.typer {
+                @extend h1;
+                margin: 0;
+                color: $color-background;
+            }
+        }
+        span {
+            @extend h1;
+            color: $color-background;
+        }
+    }
+}
+
+// blinking
+.typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink {
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}

@@ -25,8 +25,8 @@ exports.initLocals = function(req, res, next) {
 	
 	locals.navLinks = [
 		{ label: 'About',		key: 'about',		href: '/about' },
-		{ label: 'Blog',		key: 'blog',		href: '/' },
-		{ label: 'Contact',		key: 'contact',		href: '/contact' }
+        { label: 'Contact',		key: 'contact',		href: '/contact' }
+//		{ label: 'Blog',		key: 'blog',		href: '/' }
 	];
 	
 	locals.user = req.user;
@@ -69,4 +69,23 @@ exports.requireUser = function(req, res, next) {
 		next();
 	}
 	
+};
+
+exports.initErrorHandlers = function(req, res, next) {
+    res.err = function(err, title, message) {
+        res.status(500).render('errors/500', {
+            err: err,
+            errorTitle: title,
+            errorMsg: message
+        });
+    }
+    
+    res.notfound = function(title, message) {
+        res.status(400).render('errors/404', {
+            errorTitle: title,
+            errorMsg: message
+        });
+    };
+    
+    next();
 };

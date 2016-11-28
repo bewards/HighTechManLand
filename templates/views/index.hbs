@@ -1,17 +1,28 @@
+{{#unless filters.category}}
+    {{> header/typer-allthings }}
+{{/unless}}
+
 <div class="container">
     <div class="blog-module">
         <div class="blog-filter-options">
             <div class="filter-group categories">
 
-                <h3 class="filter-group-label">Categories</h3>
-                {{#each data.categories }}
-                    {{#if postCount}}
-                        <span class="filter">
-                            <input type="checkbox" id="cat-{{name}}" value="{{key}}" />
-                            <label class="b-tag" for="cat-{{name}}">{{name}} ({{postCount}})</label>
-                        </span>
-                    {{/if}}
-                {{/each}}
+               {{#if filters.category}}
+                   <h3>Category: <span>{{data.category.name}}</span></h3>
+                   <a href="/">(Back to All)</a>
+               {{else}}
+                    <h3 class="filter-group-label">Categories</h3>
+                    <div class="filters">
+                        {{#each data.categories }}
+                            {{#if postCount}}
+                                <span class="filter">
+                                    <input type="checkbox" id="cat-{{name}}" value="{{key}}" />
+                                    <label class="b-tag" for="cat-{{name}}">{{name}} ({{postCount}})</label>
+                                </span>
+                            {{/if}}
+                        {{/each}}
+                    </div>
+               {{/if}}
                 
             </div>
             <div class="filter-group sort">
@@ -21,12 +32,12 @@
         <div class="blog-posts js-shuffle">
             {{#each data.posts.results}}
             
-            <figure class="post" data-ks-editable="{{#if ../user}}{{adminEditableUrl ../../user _id}}{{/if}}" data-categories='{{categoryKeys categories}}'>
+            <figure class="post" data-ks-editable="{{#if ../user}}{{adminEditableUrl ../../user _id}}{{/if}}" data-categories='{{categoryKeys categories}}' data-equalizer-watch>
                 <figcaption>
                     <h3><a href="{{postUrl slug}}">{{{title}}}</a></h3>
                 </figcaption>
-                <p class="lead text-muted">
-                    {{{categoryList categories prefix="<span>Posted in</span>"}}} {{#if author.name.first}}by {{author.name.first}}{{/if}}
+                <p class="text-muted">
+                    {{{categoryList categories prefix="<span>Posted in </span>"}}} on {{date publishedDate format='MMMM D YYYY'}}
                 </p>
                 <div class="post-brief">{{{content.brief}}}</div>
                 <p class="read-more"><a href="{{postUrl slug}}">Read more...</a></p>
@@ -34,6 +45,7 @@
             {{/each}}
             <div class="sizer"></div>
         </div>
+<!--
         <div class="blog-categories">
             <h2>Categories</h2>
             <div style="margin-top: 70px;" class="list-group">
@@ -42,5 +54,6 @@
             </div>
         </div>
         {{>pagination}}
+-->
     </div>
 </div>

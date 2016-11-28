@@ -1,3 +1,8 @@
+html, body {
+   margin: 0;
+   padding: 0;
+   height: 100%;
+}
 html {
     box-sizing: border-box;
     font-size: $fontsize-base * 1px;
@@ -8,7 +13,25 @@ body {
     line-height: 1.5;
     font-size: inherit;
     font-family: $font-opensans;
-    padding-top: calc(50px + 3vw);    // for fixed header displacement
+    padding-top: 50px;
+    
+    @include breakpoint($bp-desktop) {
+        padding-top: 68px;
+    }
+}
+
+#container {
+   min-height: 100%;
+   position: relative;
+}
+#body {
+    padding-bottom: 297px;           /* Height of the footer + 30px */
+}
+#footer {
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   height: 267px;                   /* Height of the footer */
 }
 
 // typography
@@ -25,6 +48,13 @@ p {
         
         @include breakpoint($bp-tablet) {
             @include fontsize(20);
+        }
+    }
+    &.tab {
+        padding-left: 1em;
+        
+        @include breakpoint($bp-tablet) {
+            padding-left: 2em;
         }
     }
 }

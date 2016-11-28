@@ -12,8 +12,8 @@ var handlebars = require('express-handlebars');
 
 keystone.init({
 
-	'name': 'TheDevPit',
-	'brand': 'TheDevPit',
+	'name': 'HighTechManLand',
+	'brand': 'HighTechManLand',
 	
 	'sass': 'public',
 	'static': 'public',
@@ -68,8 +68,10 @@ keystone.set('routes', require('./routes'));
 
 keystone.set('nav', {
 	'posts': ['posts', 'post-categories'],
+    'pages': 'content-pages',
 	'enquiries': 'enquiries',
-	'users': 'users'
+	'users': 'users',
+    'typed': ['phrases']
 });
 
 // Start Keystone to connect to your database and initialise the web server

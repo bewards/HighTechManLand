@@ -21,10 +21,33 @@
 var keystone = require('keystone');
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
+var page_router = require('./page_router');
+
+//var BasePage = require('../models/BasePage');
+//var mongoose = require('mongoose');
+//
+//delete mongoose.models["ContentPage"];
+//delete mongoose.modelSchemas["ContentPage"];
+//delete mongoose.models["BasePage"];
+//delete mongoose.modelSchemas["BasePage"];
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
+keystone.pre('routes', middleware.initErrorHandlers);
 keystone.pre('render', middleware.flashMessages);
+
+// handle errors
+keystone.set('404', function(req, res, next) {
+    res.notfound();
+});
+keystone.set('500', function(err, req, res, next) {
+    var title, message;
+    if (err instanceof Error) {
+        message = err.message;
+        err = err.stack;
+    }
+    res.err(err, "500 Error", message);
+});
 
 // Import Route Controllers
 var routes = {
@@ -35,12 +58,15 @@ var routes = {
 exports = module.exports = function(app) {
 	
 	// Views
-	app.get('/about', routes.views.about);
-	app.get(['/:category?'], routes.views.blog);
+	//app.get('/about', routes.views.about);
+    app.get('/contact', routes.views.contact);
+	//app.get(['/:category'], routes.views.blog);
+    app.get(['/'], routes.views.blog);
+    app.get(['/category/:category'], routes.views.blog);
 	app.get('/post/:post', routes.views.post);
-	app.all('/contact', routes.views.contact);
+    
+    app.get('/:slug', page_router);
 	
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
-	
 };

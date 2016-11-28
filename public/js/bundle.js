@@ -12208,6 +12208,32 @@ return jQuery;
 }));
 
 },{}],3:[function(require,module,exports){
+Prism.languages.csharp = Prism.languages.extend('clike', {
+	'keyword': /\b(abstract|as|async|await|base|bool|break|byte|case|catch|char|checked|class|const|continue|decimal|default|delegate|do|double|else|enum|event|explicit|extern|false|finally|fixed|float|for|foreach|goto|if|implicit|in|int|interface|internal|is|lock|long|namespace|new|null|object|operator|out|override|params|private|protected|public|readonly|ref|return|sbyte|sealed|short|sizeof|stackalloc|static|string|struct|switch|this|throw|true|try|typeof|uint|ulong|unchecked|unsafe|ushort|using|virtual|void|volatile|while|add|alias|ascending|async|await|descending|dynamic|from|get|global|group|into|join|let|orderby|partial|remove|select|set|value|var|where|yield)\b/,
+	'string': [
+		/@("|')(\1\1|\\\1|\\?(?!\1)[\s\S])*\1/,
+		/("|')(\\?.)*?\1/
+	],
+	'number': /\b-?(0x[\da-f]+|\d*\.?\d+f?)\b/i
+});
+
+Prism.languages.insertBefore('csharp', 'keyword', {
+	'preprocessor': {
+		pattern: /(^\s*)#.*/m,
+		lookbehind: true,
+		alias: 'property',
+		inside: {
+			// highlight preprocessor directives as keywords
+			'directive': {
+				pattern: /(\s*#)\b(define|elif|else|endif|endregion|error|if|line|pragma|region|undef|warning)\b/,
+				lookbehind: true,
+				alias: 'keyword'
+			}
+		}
+	}
+});
+
+},{}],4:[function(require,module,exports){
 (function (global){
 
 /* **********************************************
@@ -12928,7 +12954,7 @@ Prism.languages.js = Prism.languages.javascript;
 })();
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 /*!
  * Shuffle.js by @Vestride
  * Categorize, sort, and filter a responsive grid of items.
@@ -14617,7 +14643,9 @@ return Shuffle;
 
 });
 
-},{"jquery":2}],5:[function(require,module,exports){
+},{"jquery":2}],6:[function(require,module,exports){
+!function(t){"use strict";var s=function(s,e){this.el=t(s),this.options=t.extend({},t.fn.typed.defaults,e),this.isInput=this.el.is("input"),this.attr=this.options.attr,this.showCursor=this.isInput?!1:this.options.showCursor,this.elContent=this.attr?this.el.attr(this.attr):this.el.text(),this.contentType=this.options.contentType,this.typeSpeed=this.options.typeSpeed,this.startDelay=this.options.startDelay,this.backSpeed=this.options.backSpeed,this.backDelay=this.options.backDelay,this.stringsElement=this.options.stringsElement,this.strings=this.options.strings,this.strPos=0,this.arrayPos=0,this.stopNum=0,this.loop=this.options.loop,this.loopCount=this.options.loopCount,this.curLoop=0,this.stop=!1,this.cursorChar=this.options.cursorChar,this.shuffle=this.options.shuffle,this.sequence=[],this.build()};s.prototype={constructor:s,init:function(){var t=this;t.timeout=setTimeout(function(){for(var s=0;s<t.strings.length;++s)t.sequence[s]=s;t.shuffle&&(t.sequence=t.shuffleArray(t.sequence)),t.typewrite(t.strings[t.sequence[t.arrayPos]],t.strPos)},t.startDelay)},build:function(){var s=this;if(this.showCursor===!0&&(this.cursor=t('<span class="typed-cursor">'+this.cursorChar+"</span>"),this.el.after(this.cursor)),this.stringsElement){s.strings=[],this.stringsElement.hide();var e=this.stringsElement.find("p");t.each(e,function(e,i){s.strings.push(t(i).html())})}this.init()},typewrite:function(t,s){if(this.stop!==!0){var e=Math.round(70*Math.random())+this.typeSpeed,i=this;i.timeout=setTimeout(function(){var e=0,r=t.substr(s);if("^"===r.charAt(0)){var o=1;/^\^\d+/.test(r)&&(r=/\d+/.exec(r)[0],o+=r.length,e=parseInt(r)),t=t.substring(0,s)+t.substring(s+o)}if("html"===i.contentType){var n=t.substr(s).charAt(0);if("<"===n||"&"===n){var a="",h="";for(h="<"===n?">":";";t.substr(s).charAt(0)!==h;)a+=t.substr(s).charAt(0),s++;s++,a+=h}}i.timeout=setTimeout(function(){if(s===t.length){if(i.options.onStringTyped(i.arrayPos),i.arrayPos===i.strings.length-1&&(i.options.callback(),i.curLoop++,i.loop===!1||i.curLoop===i.loopCount))return;i.timeout=setTimeout(function(){i.backspace(t,s)},i.backDelay)}else{0===s&&i.options.preStringTyped(i.arrayPos);var e=t.substr(0,s+1);i.attr?i.el.attr(i.attr,e):i.isInput?i.el.val(e):"html"===i.contentType?i.el.html(e):i.el.text(e),s++,i.typewrite(t,s)}},e)},e)}},backspace:function(t,s){if(this.stop!==!0){var e=Math.round(70*Math.random())+this.backSpeed,i=this;i.timeout=setTimeout(function(){if("html"===i.contentType&&">"===t.substr(s).charAt(0)){for(var e="";"<"!==t.substr(s).charAt(0);)e-=t.substr(s).charAt(0),s--;s--,e+="<"}var r=t.substr(0,s);i.attr?i.el.attr(i.attr,r):i.isInput?i.el.val(r):"html"===i.contentType?i.el.html(r):i.el.text(r),s>i.stopNum?(s--,i.backspace(t,s)):s<=i.stopNum&&(i.arrayPos++,i.arrayPos===i.strings.length?(i.arrayPos=0,i.shuffle&&(i.sequence=i.shuffleArray(i.sequence)),i.init()):i.typewrite(i.strings[i.sequence[i.arrayPos]],s))},e)}},shuffleArray:function(t){var s,e,i=t.length;if(i)for(;--i;)e=Math.floor(Math.random()*(i+1)),s=t[e],t[e]=t[i],t[i]=s;return t},reset:function(){var t=this;clearInterval(t.timeout);var s=this.el.attr("id");this.el.after('<span id="'+s+'"/>'),this.el.remove(),"undefined"!=typeof this.cursor&&this.cursor.remove(),t.options.resetCallback()}},t.fn.typed=function(e){return this.each(function(){var i=t(this),r=i.data("typed"),o="object"==typeof e&&e;r||i.data("typed",r=new s(this,o)),"string"==typeof e&&r[e]()})},t.fn.typed.defaults={strings:["These are the default values...","You know what you should do?","Use your own!","Have a great day!"],stringsElement:null,typeSpeed:0,startDelay:0,backSpeed:0,shuffle:!1,backDelay:500,loop:!1,loopCount:!1,showCursor:!0,cursorChar:"|",attr:null,contentType:"html",callback:function(){},preStringTyped:function(){},onStringTyped:function(){},resetCallback:function(){}}}(window.jQuery);
+},{}],7:[function(require,module,exports){
 (function (global){
 ; var __browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
 /*! modernizr 3.3.1 (Custom Build) | MIT *
@@ -14628,16 +14656,21 @@ return Shuffle;
 }).call(global, undefined, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],6:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 // frameworks, libraries, plugins, etc.
 var Modernizr = require('Modernizr');
 var $ = jQuery = require('jquery');
 require('bootstrap-sass');
 require('prismjs');
+require('prismjs/components/prism-csharp');
+
+// custom utilities
+var equalizer = require('./modules/equalizer.js');
 
 // modules
 var header = require('header');
 var shuffle = require('shuffle');
+var typer = require('typer');
 
 module.exports = function () {
 
@@ -14647,14 +14680,182 @@ module.exports = function () {
     });
 
 }();
-},{"Modernizr":5,"bootstrap-sass":1,"header":7,"jquery":2,"prismjs":3,"shuffle":8}],7:[function(require,module,exports){
+},{"./modules/equalizer.js":10,"Modernizr":7,"bootstrap-sass":1,"header":11,"jquery":2,"prismjs":4,"prismjs/components/prism-csharp":3,"shuffle":12,"typer":13}],9:[function(require,module,exports){
+var $ = jQuery = require('jquery');
+
+/**
+ * @module dispatcher test
+ */
+
+module.exports = function () {
+    /* fireCallback */
+
+    function fireCallback(callback, parameter) {
+        if ($.isFunction(callback)) {
+            callback(parameter);
+        }
+    }
+
+    function fireCallbacks(callbacks, parameter) {
+        for (var i = 0; i < callbacks.length; i++) {
+            fireCallback(callbacks[i], parameter);
+        }
+    }
+
+    return {
+        fireCallbacks: fireCallbacks
+    };
+}();
+},{"jquery":2}],10:[function(require,module,exports){
+/* 
+ This is meant to solve the common problem we have with needing to set consistent heights to items 
+ that will be visually side by side but within container items.
+
+  Options
+    data-equalizer-dynamic: set on the same html element as data-equalizer, this option makes the
+        calculation of rows responsive so that heights are so appropriately when 1-N columns in a
+        row across breakpoints.
+
+*/
+
+var $ = jQuery = require('jquery');
+var viewport = require('./viewport');
+
+module.exports = function () {
+
+    var $equalizeContainers = $("[data-equalizer]"),
+        $equalizeContainersImageAlign = $("[data-equalizer-image-align]"),
+        doNotEqualizeIfHasClasses = ".test";
+
+    function equalize($equalizeContainer, cols) {
+
+        var maxHeight = 0;
+        var $equalizedItems = $equalizeContainer.find('[data-equalizer-watch]');
+
+        // do not equalize
+        if ($equalizeContainer.is(doNotEqualizeIfHasClasses)) {
+            $equalizedItems.height('inherit');
+            return;
+        }
+
+        // if dynamic mode has grouped rows, equalize cols by grouped row
+        if (typeof cols !== 'undefined') {
+
+            while ($equalizedItems.length) {
+                var currentEqualizedItemGroup = $($equalizedItems.splice(0, cols));
+
+                maxHeight = 0;
+                currentEqualizedItemGroup.height('inherit');
+                currentEqualizedItemGroup.each(function (i, element) {
+                    var height = $(element).outerHeight();
+                    if (height > maxHeight) {
+                        maxHeight = height;
+                    }
+                });
+                currentEqualizedItemGroup.height(maxHeight);
+            }
+        } else {
+            $equalizedItems.height('inherit');
+            $equalizedItems.each(function (i, element) {
+                var height = $(element).height();
+                if (height > maxHeight) {
+                    maxHeight = height;
+                }
+            });
+            $equalizedItems.height(maxHeight);
+        }
+    }
+
+    function equalizeImages($equalizeContainer, cols) {
+
+        var maxHeight = 0;
+        var $equalizedItems = $equalizeContainer.find('[data-equalizer-watch]');
+
+        // do not equalize
+        if ($equalizeContainer.is(doNotEqualizeIfHasClasses)) {
+            $equalizedItems.height('inherit');
+            return;
+        }
+
+        if ($equalizedItems.length < 2) {
+            $equalizedItems.height('inherit');
+            return;
+        }
+
+        $equalizedItems.height('inherit');
+        $equalizedItems.each(function (i, element) {
+            var $image = $(element).find('svg, img');
+            $(element).height($image.height());
+            var height = $(element).height();
+            if (height > maxHeight) {
+                maxHeight = height;
+            }
+        });
+        $equalizedItems.height(maxHeight);
+    }
+
+    /* Summary: gets the column count of the first row in order to split all the columns into groups if set to dynamic mode
+        - previous data-equalizer-watch elements may not be direct siblings, so we can get the collected columns of a row by index instead
+    */
+    function getRowColCount($container) {
+        var $cols = $container.find('[data-equalizer-watch]');
+        if ($cols) {
+
+            var tempCount = 0;
+            $cols.each(function (index) {
+                var $col = $(this);
+
+                if (index - 1 >= 0) {
+                    if ($col.offset().top !== $cols.eq(index - 1).offset().top) {
+                        return false;
+                    }
+                    tempCount++;
+                } else {
+                    tempCount++;
+                }
+            });
+            return tempCount;
+        }
+        return $cols.length;
+    }
+
+    function equalizeAll() {
+        $equalizeContainers.each(function (i, element) {
+            var $container = $(element);
+
+            // if need equalize each row group in container
+            if (typeof $container.attr('data-equalizer-dynamic') === "string") {
+                var rowColCount = getRowColCount($container);
+
+                equalize($container, rowColCount);
+            } else {
+                equalize($container);
+            }
+        });
+        $equalizeContainersImageAlign.each(function (i, element) {
+            var $container = $(element);
+            equalizeImages($container);
+        });
+    }
+
+    function load() {
+        //equalizeAll();
+        viewport.resize(equalizeAll);
+    }
+
+    $(document).ready(function () {
+        load();
+    });
+}();
+},{"./viewport":14,"jquery":2}],11:[function(require,module,exports){
 var $ = jQuery = require('jquery');
 
 module.exports = function() {
     
     var $body = $('body');
+    var $hamburger = $('#header .hamburger');
     
-    $('#header .hamburger').on('click', function() {
+    $hamburger.on('click', function() {
         var $btn = $(this);
         
         $body.toggleClass('nav-open');
@@ -14662,8 +14863,17 @@ module.exports = function() {
         return false;
     });
     
+    $body.on('mouseup', function(e) {
+        if (document.documentElement.clientWidth < 768) {
+            var $navContainer = $hamburger.next();
+            if ($body.hasClass('nav-open') && !$navContainer.is(e.target) && $navContainer.has(e.target).length === 0 && !$hamburger.is(e.target.parentElement)) {
+                $hamburger.trigger('click');
+            }
+        }
+    });
+    
 }();
-},{"jquery":2}],8:[function(require,module,exports){
+},{"jquery":2}],12:[function(require,module,exports){
 var $ = jQuery = require('jquery');
 require('shufflejs');
 
@@ -14698,7 +14908,7 @@ module.exports = function() {
             }
         }
         
-        // If a shapes filter is active
+        // If a categories filter is active
         function itemPassesFilters(data) {
             if (categories.length > 0 && !valueInArrays(data.categories, categories)) {
                 return false;
@@ -14772,4 +14982,97 @@ module.exports = function() {
     Shuffler.init();
     
 }();
-},{"jquery":2,"shufflejs":4}]},{},[6]);
+},{"jquery":2,"shufflejs":5}],13:[function(require,module,exports){
+var $ = jQuery = require('jquery');
+require('typed.js');
+
+module.exports = function() {
+    
+    var $typedModules = $('.typed');
+    
+    $typedModules.each(function(e) {
+        
+        var $typedModule = $(this);
+        var $stringEls = $typedModule.find('.typed-strings');
+        var $typer = $typedModule.find('.typer');
+        if ($stringEls && $typer) {
+            $typer.typed({
+                stringsElement: $stringEls,
+                loop: true,
+                backDelay: 3000,
+                typeSpeed: 100
+            });
+        }
+    });
+    
+}();
+},{"jquery":2,"typed.js":6}],14:[function(require,module,exports){
+var $ = jQuery = require('jquery');
+var dispatcher = require('./dispatcher');
+
+module.exports = function () {
+
+    var $window = $(window);
+    var $document = $(document);
+    var $htmlBody = $('html, body');
+
+    var documentHeight = '';
+
+    var currentViewport = {
+        width: 0,
+        height: 0
+    };
+
+    var callbacks = {
+        scroll: [],
+        scrollUp: [],
+        scrollDown: [],
+        resize: []
+    };
+
+    //public methods
+    function resize(callback) {
+        callbacks.resize.push(callback);
+    }
+
+    function get() {
+        return currentViewport;
+    }
+
+    //private methods
+    function updateCurrentViewport() {
+        currentViewport.width = $window.width();
+        currentViewport.height = $window.height();
+    }
+
+    function handleResize() {
+        updateCurrentViewport();
+        dispatcher.fireCallbacks(callbacks.resize);
+    }
+
+    function checkHtmlSize() {
+        if (documentHeight !== $document.height()) {
+            documentHeight = $document.height();
+
+            handleResize();
+        }
+    }
+
+    function checkHtmlResize() {
+        setInterval(checkHtmlSize, 1);
+    }
+
+    function load() {
+        updateCurrentViewport();
+        $window.resize(handleResize);
+        checkHtmlResize();
+    }
+
+    load();
+
+    return {
+        resize: resize,
+        get: get
+    };
+}();
+},{"./dispatcher":9,"jquery":2}]},{},[8]);

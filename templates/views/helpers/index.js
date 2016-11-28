@@ -111,12 +111,12 @@ module.exports = function() {
                     if (isTagTemplate) {
                         
                         return linkTagTemplate({
-                            url: ('/' + tag.key),
+                            url: ('/category/' + tag.key),
                             text: _.escape(tag.name)
                         });                        
                     } else {
                         return linkTemplate({
-                            url: ('/' + tag.key),
+                            url: ('/category/' + tag.key),
                             text: _.escape(tag.name)
                         });
                     }

@@ -1,76 +1,77 @@
 {
-  "name": "TheDevPit",
-  "version": "0.0.1",
-  "description": "Personal Website of Benjamin Sewards",
-  "private": true,
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "author": "Benjamin Sewards",
-  "license": "ISC",
-  "browser": {
-    "shuffle": "./public/js/modules/shuffle.js",
-    "header": "./public/js/modules/header.js",
-    "Modernizr": "./public/js/framework/modernizr-custom.js"
-  },
-  "browserify": {
-    "transform": [
+    "name": "HighTechManLand",
+    "version": "0.0.1",
+    "description": "Personal Website of Benjamin Sewards",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "author": "Benjamin Sewards",
+    "license": "ISC",
+    "browser": {
+        "shuffle": "./public/js/modules/shuffle.js",
+        "header": "./public/js/modules/header.js",
+        "typer": "./public/js/modules/typer.js",
+        "Modernizr": "./public/js/framework/modernizr-custom.js"
+    },
+    "browserify": {
+        "transform": [
       "browserify-shim"
     ]
-  },
-  "browserify-shim": {
-    "Modernizr": {
-      "exports": "Modernizr"
-    }
-  },
-  "dependencies": {
-    "async": "^1.5.0",
-    "bootstrap-sass": "^3.3.6",
-    "browserify-shim": "^3.8.11",
-    "cloudinary": "^1.2.4",
-    "dotenv": "^1.1.0",
-    "express-handlebars": "^1.1.0",
-    "handlebars": "^2.0.0",
-    "jquery": "^2.2.1",
-    "keystone": "^0.3.17",
-    "moment": "^2.10.6",
-    "node-sass": "^3.3.2",
-    "node-sass-middleware": "^0.9.7",
-    "prismjs": "^1.4.1",
-    "shufflejs": "^3.1.1",
-    "typed.js": "^1.1.1",
-    "underscore": "^1.8.3"
-  },
-  "devDependencies": {
-    "autoprefixer": "^6.3.6",
-    "breakpoint-sass": "^2.7.0",
-    "gulp": "^3.7.0",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-changed": "^1.3.0",
-    "gulp-copy": "0.0.2",
-    "gulp-debug": "^2.1.2",
-    "gulp-filter": "^3.0.1",
-    "gulp-if": "^2.0.0",
-    "gulp-jsdoc": "^0.1.5",
-    "gulp-jshint": "^2.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.0.4",
-    "gulp-shell": "^0.5.0",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-streamify": "^1.0.2",
-    "gulp-util": "^3.0.7",
-    "gulp-watch": "^4.3.5",
-    "jshint": "^2.8.0",
-    "jshint-stylish": "^2.1.0",
-    "vinyl-source-stream": "^1.0.0"
-  },
-  "engines": {
-    "node": ">=0.10.22",
-    "npm": ">=1.3.14"
-  },
-  "scripts": {
-    "start": "node keystone.js"
-  },
-  "main": "keystone.js"
+    },
+    "browserify-shim": {
+        "Modernizr": {
+            "exports": "Modernizr"
+        }
+    },
+    "dependencies": {
+        "async": "^1.5.0",
+        "bootstrap-sass": "^3.3.6",
+        "browserify-shim": "^3.8.11",
+        "cloudinary": "^1.2.4",
+        "dotenv": "^1.1.0",
+        "express-handlebars": "^1.1.0",
+        "handlebars": "^2.0.0",
+        "jquery": "^2.2.1",
+        "keystone": "^0.3.17",
+        "moment": "^2.10.6",
+        "node-sass": "^3.3.2",
+        "node-sass-middleware": "^0.9.7",
+        "prismjs": "^1.4.1",
+        "shufflejs": "^3.1.1",
+        "typed.js": "^1.1.1",
+        "underscore": "^1.8.3"
+    },
+    "devDependencies": {
+        "autoprefixer": "^6.3.6",
+        "breakpoint-sass": "^2.7.0",
+        "gulp": "^3.7.0",
+        "gulp-autoprefixer": "^3.1.0",
+        "gulp-changed": "^1.3.0",
+        "gulp-copy": "0.0.2",
+        "gulp-debug": "^2.1.2",
+        "gulp-filter": "^3.0.1",
+        "gulp-if": "^2.0.0",
+        "gulp-jsdoc": "^0.1.5",
+        "gulp-jshint": "^2.0.0",
+        "gulp-rename": "^1.2.2",
+        "gulp-sass": "^2.0.4",
+        "gulp-shell": "^0.5.0",
+        "gulp-sourcemaps": "^1.6.0",
+        "gulp-streamify": "^1.0.2",
+        "gulp-util": "^3.0.7",
+        "gulp-watch": "^4.3.5",
+        "jshint": "^2.8.0",
+        "jshint-stylish": "^2.1.0",
+        "vinyl-source-stream": "^1.0.0"
+    },
+    "engines": {
+        "node": ">=0.10.22",
+        "npm": ">=1.3.14"
+    },
+    "scripts": {
+        "start": "node keystone.js"
+    },
+    "main": "keystone.js"
 }

@@ -1,53 +1,61 @@
 #footer {
-    @include make-row();
-	margin-top: 30px;
-	padding-top: 30px;
+    margin-top: 30px;
     
-    h4 {
-        @include breakpoint($bp-mobileonly) {
-            text-align: center;
-        }
-        margin-top: 0;
-        text-transform: uppercase;
-        @include fontsize(20);
-        letter-spacing: 2px;
+    @include breakpoint($bp-desktop) {
+        margin-top: 50px;
     }
     
-    > p {
-        @include make-xs-column(12);
-        padding-top: 20px;
-        padding-bottom: 20px;
-        
-        &:last-child {
-            margin: 0;
+    footer {
+        @include make-row();
+        margin-top: 30px;
+        padding-top: 30px;
+
+        h4 {
             @include breakpoint($bp-mobileonly) {
                 text-align: center;
             }
+            margin-top: 0;
+            text-transform: uppercase;
+            @include fontsize(20);
+            letter-spacing: 2px;
         }
-    }
-    > section {
-        @include make-sm-column(4);
-        
-        &.social {
-            @include breakpoint($bp-tablet) {
-                text-align: center;
-            }
-            > ul {
-                @include make-row();
-                
-                li {
-                    @include make-xs-column(6);
-                    
-                    &.full {
-                        width: 100%;
-                        margin-top: 10px;
-                    }
+
+        > p {
+            @include make-xs-column(12);
+            padding-top: 20px;
+            padding-bottom: 20px;
+
+            &:last-child {
+                margin: 0;
+                @include breakpoint($bp-mobileonly) {
+                    text-align: center;
                 }
             }
         }
-        &.contact {
-            @include breakpoint($bp-tablet) {
-                text-align: right;
+        > section {
+            @include make-sm-column(4);
+
+            &.social {
+                @include breakpoint($bp-tablet) {
+                    text-align: center;
+                }
+                > ul {
+                    @include make-row();
+
+                    li {
+                        @include make-xs-column(6);
+
+                        &.full {
+                            width: 100%;
+                            margin-top: 10px;
+                        }
+                    }
+                }
+            }
+            &.contact {
+                @include breakpoint($bp-tablet) {
+                    text-align: right;
+                }
             }
         }
     }
