@@ -12234,6 +12234,8 @@ Prism.languages.insertBefore('csharp', 'keyword', {
 });
 
 },{}],4:[function(require,module,exports){
+!function(){function e(e,t){return Array.prototype.slice.call((t||document).querySelectorAll(e))}function t(e,t){return t=" "+t+" ",(" "+e.className+" ").replace(/[\n\t]/g," ").indexOf(t)>-1}function n(e,n,i){for(var o,a=n.replace(/\s+/g,"").split(","),l=+e.getAttribute("data-line-offset")||0,d=r()?parseInt:parseFloat,c=d(getComputedStyle(e).lineHeight),s=0;o=a[s++];){o=o.split("-");var u=+o[0],m=+o[1]||u,h=document.createElement("div");h.textContent=Array(m-u+2).join(" \n"),h.className=(i||"")+" line-highlight",t(e,"line-numbers")||(h.setAttribute("data-start",u),m>u&&h.setAttribute("data-end",m)),h.style.top=(u-l-1)*c+"px",t(e,"line-numbers")?e.appendChild(h):(e.querySelector("code")||e).appendChild(h)}}function i(){var t=location.hash.slice(1);e(".temporary.line-highlight").forEach(function(e){e.parentNode.removeChild(e)});var i=(t.match(/\.([\d,-]+)$/)||[,""])[1];if(i&&!document.getElementById(t)){var r=t.slice(0,t.lastIndexOf(".")),o=document.getElementById(r);o&&(o.hasAttribute("data-line")||o.setAttribute("data-line",""),n(o,i,"temporary "),document.querySelector(".temporary.line-highlight").scrollIntoView())}}if("undefined"!=typeof self&&self.Prism&&self.document&&document.querySelector){var r=function(){var e;return function(){if("undefined"==typeof e){var t=document.createElement("div");t.style.fontSize="13px",t.style.lineHeight="1.5",t.style.padding=0,t.style.border=0,t.innerHTML="&nbsp;<br />&nbsp;",document.body.appendChild(t),e=38===t.offsetHeight,document.body.removeChild(t)}return e}}(),o=0;Prism.hooks.add("complete",function(t){var r=t.element.parentNode,a=r&&r.getAttribute("data-line");r&&a&&/pre/i.test(r.nodeName)&&(clearTimeout(o),e(".line-highlight",r).forEach(function(e){e.parentNode.removeChild(e)}),n(r,a),o=setTimeout(i,1))}),window.addEventListener&&window.addEventListener("hashchange",i)}}();
+},{}],5:[function(require,module,exports){
 (function (global){
 
 /* **********************************************
@@ -12954,7 +12956,7 @@ Prism.languages.js = Prism.languages.javascript;
 })();
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /*!
  * Shuffle.js by @Vestride
  * Categorize, sort, and filter a responsive grid of items.
@@ -14643,9 +14645,9 @@ return Shuffle;
 
 });
 
-},{"jquery":2}],6:[function(require,module,exports){
+},{"jquery":2}],7:[function(require,module,exports){
 !function(t){"use strict";var s=function(s,e){this.el=t(s),this.options=t.extend({},t.fn.typed.defaults,e),this.isInput=this.el.is("input"),this.attr=this.options.attr,this.showCursor=this.isInput?!1:this.options.showCursor,this.elContent=this.attr?this.el.attr(this.attr):this.el.text(),this.contentType=this.options.contentType,this.typeSpeed=this.options.typeSpeed,this.startDelay=this.options.startDelay,this.backSpeed=this.options.backSpeed,this.backDelay=this.options.backDelay,this.stringsElement=this.options.stringsElement,this.strings=this.options.strings,this.strPos=0,this.arrayPos=0,this.stopNum=0,this.loop=this.options.loop,this.loopCount=this.options.loopCount,this.curLoop=0,this.stop=!1,this.cursorChar=this.options.cursorChar,this.shuffle=this.options.shuffle,this.sequence=[],this.build()};s.prototype={constructor:s,init:function(){var t=this;t.timeout=setTimeout(function(){for(var s=0;s<t.strings.length;++s)t.sequence[s]=s;t.shuffle&&(t.sequence=t.shuffleArray(t.sequence)),t.typewrite(t.strings[t.sequence[t.arrayPos]],t.strPos)},t.startDelay)},build:function(){var s=this;if(this.showCursor===!0&&(this.cursor=t('<span class="typed-cursor">'+this.cursorChar+"</span>"),this.el.after(this.cursor)),this.stringsElement){s.strings=[],this.stringsElement.hide();var e=this.stringsElement.find("p");t.each(e,function(e,i){s.strings.push(t(i).html())})}this.init()},typewrite:function(t,s){if(this.stop!==!0){var e=Math.round(70*Math.random())+this.typeSpeed,i=this;i.timeout=setTimeout(function(){var e=0,r=t.substr(s);if("^"===r.charAt(0)){var o=1;/^\^\d+/.test(r)&&(r=/\d+/.exec(r)[0],o+=r.length,e=parseInt(r)),t=t.substring(0,s)+t.substring(s+o)}if("html"===i.contentType){var n=t.substr(s).charAt(0);if("<"===n||"&"===n){var a="",h="";for(h="<"===n?">":";";t.substr(s).charAt(0)!==h;)a+=t.substr(s).charAt(0),s++;s++,a+=h}}i.timeout=setTimeout(function(){if(s===t.length){if(i.options.onStringTyped(i.arrayPos),i.arrayPos===i.strings.length-1&&(i.options.callback(),i.curLoop++,i.loop===!1||i.curLoop===i.loopCount))return;i.timeout=setTimeout(function(){i.backspace(t,s)},i.backDelay)}else{0===s&&i.options.preStringTyped(i.arrayPos);var e=t.substr(0,s+1);i.attr?i.el.attr(i.attr,e):i.isInput?i.el.val(e):"html"===i.contentType?i.el.html(e):i.el.text(e),s++,i.typewrite(t,s)}},e)},e)}},backspace:function(t,s){if(this.stop!==!0){var e=Math.round(70*Math.random())+this.backSpeed,i=this;i.timeout=setTimeout(function(){if("html"===i.contentType&&">"===t.substr(s).charAt(0)){for(var e="";"<"!==t.substr(s).charAt(0);)e-=t.substr(s).charAt(0),s--;s--,e+="<"}var r=t.substr(0,s);i.attr?i.el.attr(i.attr,r):i.isInput?i.el.val(r):"html"===i.contentType?i.el.html(r):i.el.text(r),s>i.stopNum?(s--,i.backspace(t,s)):s<=i.stopNum&&(i.arrayPos++,i.arrayPos===i.strings.length?(i.arrayPos=0,i.shuffle&&(i.sequence=i.shuffleArray(i.sequence)),i.init()):i.typewrite(i.strings[i.sequence[i.arrayPos]],s))},e)}},shuffleArray:function(t){var s,e,i=t.length;if(i)for(;--i;)e=Math.floor(Math.random()*(i+1)),s=t[e],t[e]=t[i],t[i]=s;return t},reset:function(){var t=this;clearInterval(t.timeout);var s=this.el.attr("id");this.el.after('<span id="'+s+'"/>'),this.el.remove(),"undefined"!=typeof this.cursor&&this.cursor.remove(),t.options.resetCallback()}},t.fn.typed=function(e){return this.each(function(){var i=t(this),r=i.data("typed"),o="object"==typeof e&&e;r||i.data("typed",r=new s(this,o)),"string"==typeof e&&r[e]()})},t.fn.typed.defaults={strings:["These are the default values...","You know what you should do?","Use your own!","Have a great day!"],stringsElement:null,typeSpeed:0,startDelay:0,backSpeed:0,shuffle:!1,backDelay:500,loop:!1,loopCount:!1,showCursor:!0,cursorChar:"|",attr:null,contentType:"html",callback:function(){},preStringTyped:function(){},onStringTyped:function(){},resetCallback:function(){}}}(window.jQuery);
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 (function (global){
 ; var __browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
 /*! modernizr 3.3.1 (Custom Build) | MIT *
@@ -14656,13 +14658,14 @@ return Shuffle;
 }).call(global, undefined, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 // frameworks, libraries, plugins, etc.
 var Modernizr = require('Modernizr');
 var $ = jQuery = require('jquery');
 require('bootstrap-sass');
 require('prismjs');
 require('prismjs/components/prism-csharp');
+require('prismjs/plugins/line-highlight/prism-line-highlight.min');
 
 // custom utilities
 var equalizer = require('./modules/equalizer.js');
@@ -14680,7 +14683,7 @@ module.exports = function () {
     });
 
 }();
-},{"./modules/equalizer.js":10,"Modernizr":7,"bootstrap-sass":1,"header":11,"jquery":2,"prismjs":4,"prismjs/components/prism-csharp":3,"shuffle":12,"typer":13}],9:[function(require,module,exports){
+},{"./modules/equalizer.js":11,"Modernizr":8,"bootstrap-sass":1,"header":12,"jquery":2,"prismjs":5,"prismjs/components/prism-csharp":3,"prismjs/plugins/line-highlight/prism-line-highlight.min":4,"shuffle":13,"typer":14}],10:[function(require,module,exports){
 var $ = jQuery = require('jquery');
 
 /**
@@ -14706,7 +14709,7 @@ module.exports = function () {
         fireCallbacks: fireCallbacks
     };
 }();
-},{"jquery":2}],10:[function(require,module,exports){
+},{"jquery":2}],11:[function(require,module,exports){
 /* 
  This is meant to solve the common problem we have with needing to set consistent heights to items 
  that will be visually side by side but within container items.
@@ -14847,7 +14850,7 @@ module.exports = function () {
         load();
     });
 }();
-},{"./viewport":14,"jquery":2}],11:[function(require,module,exports){
+},{"./viewport":15,"jquery":2}],12:[function(require,module,exports){
 var $ = jQuery = require('jquery');
 
 module.exports = function() {
@@ -14873,7 +14876,7 @@ module.exports = function() {
     });
     
 }();
-},{"jquery":2}],12:[function(require,module,exports){
+},{"jquery":2}],13:[function(require,module,exports){
 var $ = jQuery = require('jquery');
 require('shufflejs');
 
@@ -14982,7 +14985,7 @@ module.exports = function() {
     Shuffler.init();
     
 }();
-},{"jquery":2,"shufflejs":5}],13:[function(require,module,exports){
+},{"jquery":2,"shufflejs":6}],14:[function(require,module,exports){
 var $ = jQuery = require('jquery');
 require('typed.js');
 
@@ -15006,7 +15009,7 @@ module.exports = function() {
     });
     
 }();
-},{"jquery":2,"typed.js":6}],14:[function(require,module,exports){
+},{"jquery":2,"typed.js":7}],15:[function(require,module,exports){
 var $ = jQuery = require('jquery');
 var dispatcher = require('./dispatcher');
 
@@ -15075,4 +15078,4 @@ module.exports = function () {
         get: get
     };
 }();
-},{"./dispatcher":9,"jquery":2}]},{},[8]);
+},{"./dispatcher":10,"jquery":2}]},{},[9]);

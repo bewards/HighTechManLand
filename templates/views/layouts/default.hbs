@@ -41,7 +41,9 @@
                     <ul id="menu-primary-navigation" role="menu">
                         {{# each navLinks}}
                         <li role="menuitem" {{#ifeq ../section key}}class="active" {{else}}{{/ifeq}}>
-                            <a href="{{ href }}">{{ label }}</a>
+                            <a href="{{ href }}">
+                                <span>{{ label }}</span>
+                            </a>
                         </li>
                         {{/each}}
                     </ul>

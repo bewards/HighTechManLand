@@ -57,6 +57,14 @@ p {
             padding-left: 2em;
         }
     }
+    
+    // code snippets
+    > code {
+        border-radius: 6px;
+        padding: 0 2px 1px 4px;
+        background: $color-white;
+        color: $color-code;
+    }
 }
 h1,h2,h3,h4,h5,h6 {
     font-family: $font-leaguegothic;

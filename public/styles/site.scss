@@ -3,6 +3,7 @@
 @import "../../node_modules/breakpoint-sass/stylesheets/breakpoint";
 @import "framework/bootstrap";
 @import "../../node_modules/prismjs/themes/prism-coy";
+@import "../../node_modules/prismjs/plugins/line-highlight/prism-line-highlight";
 
 // Site Utility
 @import "site/vars";

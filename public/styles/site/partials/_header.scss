@@ -146,8 +146,18 @@
                     display: inline-block;
                 }
                 
-                a {
+                &.active {
+                    transform: skewX(-20deg);
+                    background: $color-background;
                     
+                    span {
+                        transform: skewX(20deg);
+                        color: $color-lightgray;
+                    }
+                }
+                
+                span {
+                    display: block;
                 }
             }
         }
