@@ -13,7 +13,11 @@ body {
     line-height: 1.5;
     font-size: inherit;
     font-family: $font-opensans;
-    padding-top: 50px;
+    padding-top: 10px;
+    
+    &:not(.mce-content-body) {
+        padding-top: 50px;
+    }
     
     @include breakpoint($bp-desktop) {
         padding-top: 68px;

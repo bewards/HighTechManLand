@@ -4584,7 +4584,9 @@ body {
   line-height: 1.5;
   font-size: inherit;
   font-family: "Open Sans", Arial, sans-serif;
-  padding-top: 50px; }
+  padding-top: 10px; }
+  body:not(.mce-content-body) {
+    padding-top: 50px; }
   @media (min-width: 1024px) {
     body {
       padding-top: 68px; } }
