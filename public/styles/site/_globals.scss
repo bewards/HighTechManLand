@@ -79,19 +79,19 @@ h1 {
     @include fontsize(45);
 }
 h2 {
-    line-height: 2;
+    line-height: 1.2em;
     @include fontsize(35);
 }
 h3 {
-    line-height: 2;
+    line-height: 1.2em;
     @include fontsize(30);
 }
 h4 {
-    line-height: 1.8;
+    line-height: 1.1em;
     @include fontsize(26);
 }
 h5 {
-    line-height: 1.5;
+    line-height: 1em;
     @include fontsize(20);
 }
 h6 {
@@ -101,6 +101,12 @@ blockquote {
     border-left: none;
     padding-left: 0;
     padding-right: 0;
+}
+ul {
+    li {
+        padding-left: 15px;
+        margin-top: 5px;
+    }
 }
 
 // links

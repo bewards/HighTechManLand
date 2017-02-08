@@ -8,6 +8,10 @@
     transition: all 150ms ease 0ms;
     background-color: $color-lightgray;
     
+    @include breakpoint($bp-tablet) {
+        height: 60px;
+    }
+    
     @include breakpoint($bp-desktop) {
         height: auto;
     }
@@ -27,11 +31,21 @@
         display: block;
         position: absolute;
         left: 0;
-        top: 50%;
+        top: 65%;
         margin-top: -1.2rem;
-        width: 50px;
+        width: 50%;
         color: transparent;
         font-size: 0;
+        
+        @include breakpoint($bp-mobileonly) {
+            max-width: 170px;
+            min-width: 125px;
+        }
+        
+        @include breakpoint($bp-tablet) {
+            top: 50%;
+            width: 240px;
+        }
         
         @include breakpoint($bp-desktop) {
             top: 0;
