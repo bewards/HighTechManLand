@@ -6,7 +6,7 @@ exports = module.exports = function(req, res) {
 	var locals = res.locals;
 	
 	// Set locals
-	locals.section = 'blog';
+	locals.section = 'blog_post';
 	locals.filters = {
 		post: req.params.post
 	};
@@ -27,6 +27,7 @@ exports = module.exports = function(req, res) {
 			locals.data.post = result;
             locals.metaTitle = result.title;
             locals.metaDescr = result.content.metaDescription;
+            locals.imageUrl = result.image ? result.image.url : "";
 			next(err);
 		});
 		

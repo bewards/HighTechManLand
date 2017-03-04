@@ -71,7 +71,8 @@ keystone.set('nav', {
     'pages': 'content-pages',
 	'enquiries': 'enquiries',
 	'users': 'users',
-    'typed': ['phrases']
+    'typed': ['phrases'],
+//    'sitesettings': 'sitesettings'
 });
 
 // Start Keystone to connect to your database and initialise the web server

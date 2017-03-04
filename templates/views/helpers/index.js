@@ -15,6 +15,11 @@ var scriptTemplate = _.template('<script src="<%= src %>"></script>');
 var cssLinkTemplate = _.template('<link href="<%= href %>" rel="stylesheet">');
 var cloudinaryUrlLimit = _.template(CLOUDINARY_HOST + '/<%= cloudinaryUser %>/image/upload/c_limit,f_auto,h_<%= height %>,w_<%= width %>/<%= publicId %>.jpg');
 
+    // OpenGraph templates
+    var metaOGTitleTemplate =  _.template('<meta property="og:title" content="<%= title %>" />');
+    var metaOGPageTypeTemplate =  _.template('<meta property="og:type" content="<%= type %>" />');
+    var metaOGPageUrlTemplate =  _.template('<meta property="og:url" content="<%= url %>" />');
+    var metaOGPageImageTemplate =  _.template('<meta property="og:image" content="<%= imgUrl %>" />');
 
 module.exports = function() {
 	
@@ -372,7 +377,26 @@ module.exports = function() {
 	
 	_helpers.underscoreFormat = function (obj, underscoreMethod) {
 		return obj._[underscoreMethod].format();
-	}
+	};
+    
+    // Generates OG Tags for Layout
+    _helpers.renderOpenGraphTags = function (metaTitle, section, fullUrl, imageUrl) {
+        
+        var tagTitle = metaOGTitleTemplate({
+            title: _.escape(metaTitle)
+        });
+        var typeTitle = metaOGPageTypeTemplate({
+            type: section == "blog" ? section : section == "blog_post" ? "article" : "website"
+        });
+        var tagUrl = metaOGPageUrlTemplate({
+            url: fullUrl
+        });
+        var tagImgUrl = metaOGPageImageTemplate({
+            imgUrl: imageUrl
+        });
+        
+        return tagTitle + " " + typeTitle + " " + tagUrl + " " + tagImgUrl;
+    };
 	
 	return _helpers;
 };
