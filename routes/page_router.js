@@ -2,23 +2,39 @@ var keystone = require('keystone');
 var views = keystone.importer(__dirname)('./views');
 
 exports = module.exports = function(req, res) {
-	var locals = res.locals;
-	var q = keystone.list('BasePage').model.findOne({
+    var locals = res.locals;
+	
+    var currentPageQuery = keystone.list('BasePage').model.findOne({
 		slug: req.params.slug
 	});
-	q.exec(function(err, result){
-		if (!result) {
-			return res.status(404).send('Page Not Found!');
-		}
-		
-        locals.page = result;
+    var siteSettingQuery = keystone.list('SiteSettings').model.find({}).limit(1);
+    
+	currentPageQuery.exec()
+    .then(function(page) {
+
+        if (!page) {
+            return res.status(404).send('Page Not Found!');
+        }
+
+        locals.page = page;
         locals.section = req.params.slug;
-        
-		console.log(result.constructor.view_name);
-		if(result.constructor.view_name) {
-			return views[result.constructor.view_name](req, res);
-		} else {
-			return views.standard_page(req, res);
-		}
-	});
+
+        console.log(page.constructor.view_name);
+
+        return siteSettingQuery.exec();
+    })
+    .then(function(siteSettings) {
+
+        locals.imageUrl = siteSettings[0].websiteImage != null ? siteSettings[0].websiteImage.url : "";
+
+        // return page view
+        if (locals.page.constructor.view_name) {
+            return views[locals.page.constructor.view_name](req, res);
+        } else {
+            return views.standard_page(req, res);
+        }
+    });
+//    .catch(function(err) {
+//       return res.status(404).send('Page Not Found!');
+//    });
 };
