@@ -1,0 +1,21 @@
+#flash-messages {
+    .alert {
+        border-radius: 0;
+        text-align: center;
+        
+        @include breakpoint($bp-tablet) {
+            text-align: left;
+        }
+    }
+    .container {
+        padding: 0;
+        
+        @include breakpoint($bp-tablet) {
+            width: 90%;
+        }
+    }
+    
+    p {
+        color: inherit;
+    }
+}

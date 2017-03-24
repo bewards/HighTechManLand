@@ -21,6 +21,10 @@ var cloudinaryUrlLimit = _.template(CLOUDINARY_HOST + '/<%= cloudinaryUser %>/im
     var metaOGPageUrlTemplate =  _.template('<meta property="og:url" content="<%= url %>" />');
     var metaOGPageImageTemplate =  _.template('<meta property="og:image" content="<%= imgUrl %>" />');
 
+    // flash messages
+    var fmContainerTemplate = _.template('<div id="flash-messages"><%=fmMessages %></div>');
+    var fmMessageTemplate = _.template('<div role="alert" class="alert alert-<%=fmAlertClass %>"><div class="container"><%=fmOutput %></div></div>');
+
 module.exports = function() {
 	
 	var _helpers = {};
@@ -307,23 +311,23 @@ module.exports = function() {
 		return html;
 	};
 
-        // special helper to ensure that we always have a valid page url set even if
-        // the link is disabled, will default to page 1
-        _helpers.paginationPreviousUrl = function(previousPage, totalPages){
-            if(previousPage === false){
-                previousPage = 1;
-            }
-            return _helpers.pageUrl(previousPage);
-        };
+    // special helper to ensure that we always have a valid page url set even if
+    // the link is disabled, will default to page 1
+    _helpers.paginationPreviousUrl = function(previousPage, totalPages){
+        if(previousPage === false){
+            previousPage = 1;
+        }
+        return _helpers.pageUrl(previousPage);
+    };
 
-        // special helper to ensure that we always have a valid next page url set
-        // even if the link is disabled, will default to totalPages
-        _helpers.paginationNextUrl = function(nextPage, totalPages){
-            if(nextPage === false){
-                nextPage = totalPages;
-            }
-            return _helpers.pageUrl(nextPage);
-        };
+    // special helper to ensure that we always have a valid next page url set
+    // even if the link is disabled, will default to totalPages
+    _helpers.paginationNextUrl = function(nextPage, totalPages){
+        if(nextPage === false){
+            nextPage = totalPages;
+        }
+        return _helpers.pageUrl(nextPage);
+    };
 
 
 	//  ### Flash Message Helper
@@ -340,7 +344,6 @@ module.exports = function() {
 	//          {{{flashMessages messages.warning}}}
 	//      </div>
 	//   {{/if}}`
-	
 	_helpers.flashMessages = function(messages) {
 		var output = '';
 		for (var i = 0; i < messages.length; i++) {
@@ -363,6 +366,59 @@ module.exports = function() {
 		}
 		return new hbs.SafeString(output);
 	};
+    
+    // variant of above for handling adding correct class to container
+	_helpers.renderFlashMessages = function(messages) {
+        if (!messages) {
+            return "";
+        }
+        
+        // foreach fm object
+        var msgListOutput = "";
+        for(var name in messages) {
+            if (messages.hasOwnProperty(name)) {
+                var obj = messages[name];
+                
+                if (!obj.length) {
+                    continue;
+                }
+                
+                var fmClass = name;
+                
+                // foreach fm property
+                var output = "";
+                for(var i = 0; i < obj.length; i++) {
+                    if (obj[i].title) {
+                        output += '<h4>' + obj[i].title + '</h4>';
+                    }
+
+                    if (obj[i].detail) {
+                        output += '<p>' + obj[i].detail + '</p>';
+                    }
+
+                    if (obj[i].list) {
+                        output += '<ul>';
+                        for (var ctr = 0; ctr < obj[i].list.length; ctr++) {
+                            output += '<li>' + obj[i].list[ctr] + '</li>';
+                        }
+                        output += '</ul>';
+                    }
+                }
+                
+                var fmHtml = fmMessageTemplate({
+                    fmAlertClass: fmClass == "error" ? "danger" : fmClass,
+                    fmOutput: output
+                });
+                msgListOutput += fmHtml;
+            }
+        }
+        
+        var fmAllHtml = fmContainerTemplate({
+            fmMessages: msgListOutput
+        });
+        
+        return fmAllHtml;
+    };
 
 
 	//  ### underscoreMethod call + format helper

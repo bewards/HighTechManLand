@@ -9,6 +9,7 @@ $screen-md-min: 1025px;    // desktop, 1025px and up
 $screen-md: 1025px;
 //$link-color:                 #017dc7;
 //$link-hover-color:           darken(#017dc7, 10%);
+$state-danger-text: red;
 
 // Reset and dependencies
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_normalize";
@@ -31,6 +32,7 @@ $screen-md: 1025px;
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_pager";
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_thumbnails";
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_media";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_alerts";
 
 // todo: comment out these with replaced sass
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_navs";

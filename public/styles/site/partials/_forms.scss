@@ -1,0 +1,11 @@
+.has-error {
+    .form-control {
+        border-style: dashed;
+        border-width: 2px;
+    }
+    
+    &.fg--recaptcha {
+        display: inline-block;
+        border: 2px dashed $state-danger-text;
+    }
+}
