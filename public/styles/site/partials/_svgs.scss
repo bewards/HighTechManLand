@@ -3,11 +3,13 @@
   position: relative;
   top: 5px;
   width: 20px;
-  animation: pulse 1s ease infinite;
+  animation: pulse 2s ease infinite;
 }
 
 @keyframes pulse {
   0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
+  25% { transform: scale(1.2); }
+  35% { transform: scale(1); }
+  45% { transform: scale(1.2); }
   100% { transform: scale(1); }
 }

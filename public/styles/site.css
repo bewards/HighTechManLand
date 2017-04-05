@@ -5516,14 +5516,20 @@ body.nav-open {
   position: relative;
   top: 5px;
   width: 20px;
-  -webkit-animation: pulse 1s ease infinite;
-  animation: pulse 1s ease infinite; }
+  -webkit-animation: pulse 2s ease infinite;
+  animation: pulse 2s ease infinite; }
 
 @-webkit-keyframes pulse {
   0% {
     -webkit-transform: scale(1);
     transform: scale(1); }
-  50% {
+  25% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2); }
+  35% {
+    -webkit-transform: scale(1);
+    transform: scale(1); }
+  45% {
     -webkit-transform: scale(1.2);
     transform: scale(1.2); }
   100% {
@@ -5534,7 +5540,13 @@ body.nav-open {
   0% {
     -webkit-transform: scale(1);
     transform: scale(1); }
-  50% {
+  25% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2); }
+  35% {
+    -webkit-transform: scale(1);
+    transform: scale(1); }
+  45% {
     -webkit-transform: scale(1.2);
     transform: scale(1.2); }
   100% {

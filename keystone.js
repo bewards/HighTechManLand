@@ -60,6 +60,11 @@ keystone.set('locals', {
 	editable: keystone.content.editable
 });
 
+// persist session data with MongoDB
+if (process.env.NODE_ENV == "production") {
+    keystone.set('session store', 'mongo');
+}
+
 // Load your project's Routes
 
 keystone.set('routes', require('./routes'));
