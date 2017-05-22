@@ -36,6 +36,7 @@
     "handlebars": "^2.0.0",
     "jquery": "^2.2.1",
     "keystone": "^0.3.17",
+    "keystone-express-sitemap": "^1.2.0",
     "moment": "^2.10.6",
     "node-sass": "^3.3.2",
     "node-sass-middleware": "^0.9.7",

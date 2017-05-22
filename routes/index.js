@@ -22,6 +22,7 @@ var keystone = require('keystone');
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
 var page_router = require('./page_router');
+var sitemap = require('keystone-express-sitemap');
 
 //var BasePage = require('../models/BasePage');
 //var mongoose = require('mongoose');
@@ -57,16 +58,26 @@ var routes = {
 // Setup Route Bindings
 exports = module.exports = function(app) {
 	
+    // sitemap gen
+    app.get('/sitemap.xml', function(req, res) {
+        try {
+            sitemap.create(keystone, req, res, { 
+                ignore: ['/:slug'] 
+            });
+        } catch(e) {
+            res.status(500).send(e + JSON.stringify(app._router.stack));
+        }
+    });
+    
 	// Views
 	//app.get('/about', routes.views.about);
-    app.all('/contact', routes.views.contact);
-	//app.get(['/:category'], routes.views.blog);
-    app.get(['/'], routes.views.blog);
-    app.get(['/category/:category'], routes.views.blog);
+    app.get('/contact', routes.views.contact);
+    app.post('/contact', routes.views.contact);
+    app.get('/category/:postcategory', routes.views.blog);
 	app.get('/post/:post', routes.views.post);
-    
+    app.get(['/'], routes.views.blog);
     app.get('/:slug', page_router);
-	
+    
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
 };

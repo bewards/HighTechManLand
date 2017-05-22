@@ -11,7 +11,7 @@ exports = module.exports = function(req, res) {
     locals.metaDescr = 'Innovative Front End Tricks and Sitecore Best Practices by Benjamin Sewards';
 	locals.section = 'blog';
 	locals.filters = {
-		category: req.params.category
+		category: req.params.postcategory
 	};
 	locals.data = {
 		posts: [],
